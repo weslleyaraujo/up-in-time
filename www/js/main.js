@@ -1,7 +1,7 @@
 require.config({
   baseUrl: '../bower_components/',
+  urlArgs: "bust=" + (new Date()).getTime(),
   paths: {
-    domready: 'require/domready',
     jquery: 'jquery/jquery',
     backbone: 'backbone/backbone',
     underscore: 'underscore/underscore',
@@ -21,13 +21,8 @@ require.config({
     },
     'hellotime': {
       deps: ['backbone'],
-      exports: 'HelloTime'
+      exports: 'app'
     }
   }
   
-});
-
-// require hellotime app
-require(['hellotime'], function (){
-  app.initialize();
 });
