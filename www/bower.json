@@ -1,0 +1,30 @@
+{
+  "name": "Hello time",
+  "version": "0.0.1",
+  "authors": [
+    "Weslley Araujo <weslleyaraujo20@gmail.com>"
+  ],
+  "description": "Simple app to manage your time at work",
+  "main": "index.html",
+  "keywords": [
+    "Timer",
+    "clock",
+    "work",
+    "time",
+    "work"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*",
+    "underscore": "*",
+    "backbone": "*",
+    "requirejs": "*"
+  }
+}
