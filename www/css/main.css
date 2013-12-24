@@ -1,0 +1,203 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+/* What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team. */
+/* ==========================================================================
+ * Base styles: opinionated defaults
+ * ========================================================================== */
+/* line 14, ../sass/main.sass */
+html,
+button,
+input,
+select,
+textarea {
+  color: #222222;
+}
+
+/* line 21, ../sass/main.sass */
+html {
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/* Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design. */
+/* line 30, ../sass/main.sass */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* line 34, ../sass/main.sass */
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/* A better looking default horizontal rule */
+/* line 41, ../sass/main.sass */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440 */
+/* line 53, ../sass/main.sass */
+audio,
+canvas,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/* Remove default fieldset styles. */
+/* line 63, ../sass/main.sass */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Allow only vertical resizing of textareas. */
+/* line 71, ../sass/main.sass */
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+ * Browse Happy prompt
+ * ========================================================================== */
+/* line 78, ../sass/main.sass */
+.browsehappy {
+  margin: 0.2em 0;
+  background: #cccccc;
+  color: black;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+ * Helper classes
+ * ========================================================================== */
+/* Image replacement */
+/* line 91, ../sass/main.sass */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+}
+
+/* line 96, ../sass/main.sass */
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+/* line 105, ../sass/main.sass */
+.is-hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* line 109, ../sass/main.sass */
+.wrap {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+/* Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements. */
+/* line 124, ../sass/main.sass */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+/* line 131, ../sass/main.sass */
+.clearfix:after {
+  clear: both;
+}
+
+/* ==========================================================================
+ * Author's custom styles
+ * ========================================================================== */
+/* line 4, ../sass/no-modular/helpers.sass */
+.fade-in-content {
+  -webkit-transition: 1.5s;
+  -moz-transition: 1.5s;
+  -o-transition: 1.5s;
+  transition: 1.5s;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 7, ../sass/no-modular/helpers.sass */
+.fade-in-content.is-visible {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* line 10, ../sass/no-modular/helpers.sass */
+.scale-out {
+  visibility: hidden;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+  opacity: 0.25;
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+
+/* line 16, ../sass/no-modular/helpers.sass */
+.scale-in {
+  visibility: visible;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+
+/* line 3, ../sass/layout/_header.sass */
+.l-header {
+  min-height: 165px;
+}
+
+/* line 3, ../sass/layout/_content.sass */
+.l-content {
+  min-height: 630px;
+}
+
+/* line 4, ../sass/states/states.sass */
+.is-visible {
+  display: block !important;
+}
