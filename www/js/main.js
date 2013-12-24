@@ -21,8 +21,11 @@ require.config({
     },
     'hellotime': {
       deps: ['backbone'],
-      exports: 'app'
+      exports: 'HelloTime'
     }
   }
-  
+});
+
+require(['hellotime'], function(){
+  new HelloTime.init();
 });
