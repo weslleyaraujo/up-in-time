@@ -5,7 +5,7 @@ require.config({
     jquery: 'jquery/jquery',
     backbone: 'backbone/backbone',
     underscore: 'underscore/underscore',
-    hellotime: '../js/app/hellotime'
+    upintime: '../js/app/upintime'
   },
   shim: {
     'jquery': {
@@ -19,13 +19,13 @@ require.config({
       deps: ['underscore'],
       exports: 'Backbone'
     },
-    'hellotime': {
+    'upintime': {
       deps: ['backbone'],
-      exports: 'HelloTime'
+      exports: 'UpInTime'
     }
   }
 });
 
-require(['hellotime'], function(){
-  new HelloTime.init();
+require(['upintime'], function(){
+  new UpInTime.init();
 });

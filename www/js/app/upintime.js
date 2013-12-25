@@ -1,4 +1,4 @@
-var HelloTime = (function () {
+var UpInTime = (function () {
   var app,
   _private,
   elements = {
