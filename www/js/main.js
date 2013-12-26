@@ -5,7 +5,9 @@ require.config({
     jquery: 'jquery/jquery',
     backbone: 'backbone/backbone',
     underscore: 'underscore/underscore',
-    upintime: '../js/app/upintime'
+    index: '../js/upintime/views/index',
+    upintime: '../js/upintime/upintime',
+    app: '../js/app'
   },
   shim: {
     'jquery': {
@@ -19,13 +21,16 @@ require.config({
       deps: ['underscore'],
       exports: 'Backbone'
     },
-    'upintime': {
-      deps: ['backbone'],
-      exports: 'UpInTime'
+    'index': {
+      deps: ['upintime']
+    },
+    'app': {
+      deps: ['index'],
+      exports: 'app'
     }
   }
 });
 
-require(['upintime'], function(){
-  new UpInTime.init();
+require(['app'], function(app){
+  app.init();
 });
