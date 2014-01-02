@@ -18,11 +18,12 @@ define(function (require){
       _private.bindRoutes();
       Backbone.history.start();
     },
+
     bindRoutes: function () {
-      upintime.Helpers.events.on('index', app.index);
-      upintime.Helpers.events.on('test', app.test);
+      upintime.Helpers.events.on('index', _private.views.index);
     },
-    removeActualView: function () {
+
+    slideIn: function () {
       if (actual.$oldView)  {
         actual.$view.removeClass('is-visible');
       }
@@ -30,9 +31,22 @@ define(function (require){
         _private.showActualView();
       }, 300);
     },
+
     showActualView: function () {
-      console.log('show the view', actual.$view)
       actual.$view.addClass('is-visible');
+    },
+    
+    // views methods
+    views: {
+      index: function () {
+        var view = new upintime.Views.Index();
+        if (actual.$view) {
+          actual.$oldView = actual.$view;
+        }
+        actual.$view = view.$el;
+        elements.$main.append(view.el);
+        _private.slideIn();
+      }
     }
   };
 
@@ -42,11 +56,15 @@ define(function (require){
       app.setDom();
       app.bind();
     },
+
     setDom: function () {
+      elements.$main = $('#main-content');
     },
+
     bind: function () {
       _private.router();
-    },
+    }, 
+
     go: function (view) {
       actual.previous = actual.currentPage || null;
       actual.next = view;
@@ -61,28 +79,6 @@ define(function (require){
       this.$el.append( next.$el );
       next.transitionIn();
       this.currentPage = next;
-    },
-
-    // views
-    index: function () {
-      var view = new upintime.Views.Index();
-      console.log(actual);
-      if (actual.$view) {
-        actual.$oldView = actual.$view;
-      }
-      actual.$view = view.$el;
-      $('body').append(view.el);
-      _private.removeActualView();
-    },
-
-    test: function () {
-      var view = new upintime.Views.Test();
-      if (actual.$view) {
-        actual.$oldView = actual.$view;
-      }
-      actual.$view = view.$el;
-      $('body').append(view.el);
-      _private.removeActualView();
     }
   }
 

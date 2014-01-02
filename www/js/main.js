@@ -2,14 +2,20 @@ require.config({
   baseUrl: '../bower_components/',
   urlArgs: "bust=" + (new Date()).getTime(),
   paths: {
+    // libs
     jquery: 'jquery/jquery',
     backbone: 'backbone/backbone',
     underscore: 'underscore/underscore',
+    
+    // views
     index: '../js/upintime/views/index',
+    
+    // app
     upintime: '../js/upintime/upintime',
     app: '../js/app'
   },
   shim: {
+    // libs
     'jquery': {
       exports: '$'
     },
@@ -21,11 +27,14 @@ require.config({
       deps: ['underscore'],
       exports: 'Backbone'
     },
-    'index': {
-      deps: ['upintime']
+    
+    // app
+    'upintime': {
+      // setting all deps of app
+      deps: ['index']
     },
     'app': {
-      deps: ['index'],
+      deps: ['upintime'],
       exports: 'app'
     }
   }
