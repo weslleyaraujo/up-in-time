@@ -1,10 +1,24 @@
+/* ==========================================================================
+ * Import fonts
+ * ========================================================================== */
+@font-face {
+  font-family: "flex_displaythin";
+  src: url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.eot");
+  src: url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.eot?#iefix") format("embedded-opentype"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.woff") format("woff"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.ttf") format("truetype"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.svg#flex_displaythin") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ==========================================================================
+ * Main colors config
+ * ========================================================================== */
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 /* ==========================================================================
  * HTML5 display definitions
  * ========================================================================== */
 /*
  * Correct `block` display not defined in IE 8/9. */
-/* line 12, ../../sass/base/normalize.sass */
+/* line 16, ../../sass/base/normalize.sass */
 article,
 aside,
 details,
@@ -22,7 +36,7 @@ summary {
 
 /*
  * Correct `inline-block` display not defined in IE 8/9. */
-/* line 29, ../../sass/base/normalize.sass */
+/* line 33, ../../sass/base/normalize.sass */
 audio,
 canvas,
 video {
@@ -32,7 +46,7 @@ video {
 /*
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices. */
-/* line 38, ../../sass/base/normalize.sass */
+/* line 42, ../../sass/base/normalize.sass */
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -41,7 +55,7 @@ audio:not([controls]) {
 /*
  * Address `[hidden]` styling not present in IE 8/9.
  * Hide the `template` element in IE, Safari, and Firefox < 22. */
-/* line 46, ../../sass/base/normalize.sass */
+/* line 50, ../../sass/base/normalize.sass */
 [hidden],
 template {
   display: none;
@@ -54,7 +68,7 @@ template {
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom. */
-/* line 59, ../../sass/base/normalize.sass */
+/* line 63, ../../sass/base/normalize.sass */
 html {
   font-family: sans-serif;
   /* 1 */
@@ -66,7 +80,7 @@ html {
 
 /*
  * Remove default margin. */
-/* line 70, ../../sass/base/normalize.sass */
+/* line 74, ../../sass/base/normalize.sass */
 body {
   margin: 0;
 }
@@ -76,7 +90,7 @@ body {
  * ========================================================================== */
 /*
  * Remove the gray background color from active links in IE 10. */
-/* line 80, ../../sass/base/normalize.sass */
+/* line 84, ../../sass/base/normalize.sass */
 a {
   text-decoration: none;
   background: transparent;
@@ -84,14 +98,14 @@ a {
 
 /*
  * Address `outline` inconsistency between Chrome and other browsers. */
-/* line 87, ../../sass/base/normalize.sass */
+/* line 91, ../../sass/base/normalize.sass */
 a:focus {
   outline: thin dotted;
 }
 
 /*
  * Improve readability when focused and also mouse hovered in all browsers. */
-/* line 93, ../../sass/base/normalize.sass */
+/* line 97, ../../sass/base/normalize.sass */
 a:active,
 a:hover {
   outline: 0;
@@ -103,7 +117,7 @@ a:hover {
 /*
  * Address variable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari 5, and Chrome. */
-/* line 105, ../../sass/base/normalize.sass */
+/* line 109, ../../sass/base/normalize.sass */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -111,14 +125,14 @@ h1 {
 
 /*
  * Address styling not present in IE 8/9, Safari 5, and Chrome. */
-/* line 112, ../../sass/base/normalize.sass */
+/* line 116, ../../sass/base/normalize.sass */
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
 /*
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
-/* line 118, ../../sass/base/normalize.sass */
+/* line 122, ../../sass/base/normalize.sass */
 b,
 strong {
   font-weight: bold;
@@ -126,14 +140,14 @@ strong {
 
 /*
  * Address styling not present in Safari 5 and Chrome. */
-/* line 125, ../../sass/base/normalize.sass */
+/* line 129, ../../sass/base/normalize.sass */
 dfn {
   font-style: italic;
 }
 
 /*
  * Address differences between Firefox and other browsers. */
-/* line 131, ../../sass/base/normalize.sass */
+/* line 135, ../../sass/base/normalize.sass */
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -142,7 +156,7 @@ hr {
 
 /*
  * Address styling not present in IE 8/9. */
-/* line 139, ../../sass/base/normalize.sass */
+/* line 143, ../../sass/base/normalize.sass */
 mark {
   background: yellow;
   color: black;
@@ -150,7 +164,7 @@ mark {
 
 /*
  * Correct font family set oddly in Safari 5 and Chrome. */
-/* line 146, ../../sass/base/normalize.sass */
+/* line 150, ../../sass/base/normalize.sass */
 code,
 kbd,
 pre,
@@ -161,28 +175,28 @@ samp {
 
 /*
  * Improve readability of pre-formatted text in all browsers. */
-/* line 156, ../../sass/base/normalize.sass */
+/* line 160, ../../sass/base/normalize.sass */
 pre {
   white-space: pre-wrap;
 }
 
 /*
  * Set consistent quote types. */
-/* line 162, ../../sass/base/normalize.sass */
+/* line 166, ../../sass/base/normalize.sass */
 q {
   quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
 /*
  * Address inconsistent and variable font size in all browsers. */
-/* line 168, ../../sass/base/normalize.sass */
+/* line 172, ../../sass/base/normalize.sass */
 small {
   font-size: 80%;
 }
 
 /*
  * Prevent `sub` and `sup` affecting `line-height` in all browsers. */
-/* line 174, ../../sass/base/normalize.sass */
+/* line 178, ../../sass/base/normalize.sass */
 sub,
 sup {
   font-size: 75%;
@@ -191,12 +205,12 @@ sup {
   vertical-align: baseline;
 }
 
-/* line 181, ../../sass/base/normalize.sass */
+/* line 185, ../../sass/base/normalize.sass */
 sup {
   top: -0.5em;
 }
 
-/* line 184, ../../sass/base/normalize.sass */
+/* line 188, ../../sass/base/normalize.sass */
 sub {
   bottom: -0.25em;
 }
@@ -206,14 +220,14 @@ sub {
  * ========================================================================== */
 /*
  * Remove border when inside `a` element in IE 8/9. */
-/* line 194, ../../sass/base/normalize.sass */
+/* line 198, ../../sass/base/normalize.sass */
 img {
   border: 0;
 }
 
 /*
  * Correct overflow displayed oddly in IE 9. */
-/* line 200, ../../sass/base/normalize.sass */
+/* line 204, ../../sass/base/normalize.sass */
 svg:not(:root) {
   overflow: hidden;
 }
@@ -223,7 +237,7 @@ svg:not(:root) {
  * ========================================================================== */
 /*
  * Address margin not present in IE 8/9 and Safari 5. */
-/* line 210, ../../sass/base/normalize.sass */
+/* line 214, ../../sass/base/normalize.sass */
 figure {
   margin: 0;
 }
@@ -233,7 +247,7 @@ figure {
  * ========================================================================== */
 /*
  * Define consistent border, margin, and padding. */
-/* line 220, ../../sass/base/normalize.sass */
+/* line 224, ../../sass/base/normalize.sass */
 fieldset {
   border: 1px solid silver;
   margin: 0 2px;
@@ -243,7 +257,7 @@ fieldset {
 /*
  * 1. Correct `color` not being inherited in IE 8/9.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets. */
-/* line 229, ../../sass/base/normalize.sass */
+/* line 233, ../../sass/base/normalize.sass */
 legend {
   border: 0;
   /* 1 */
@@ -255,7 +269,7 @@ legend {
  * 1. Correct font family not being inherited in all browsers.
  * 2. Correct font size not being inherited in all browsers.
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome. */
-/* line 240, ../../sass/base/normalize.sass */
+/* line 244, ../../sass/base/normalize.sass */
 button,
 input,
 select,
@@ -271,7 +285,7 @@ textarea {
 /*
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet. */
-/* line 255, ../../sass/base/normalize.sass */
+/* line 259, ../../sass/base/normalize.sass */
 button,
 input {
   line-height: normal;
@@ -282,7 +296,7 @@ input {
  * All other form control elements do not inherit `text-transform` values.
  * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
  * Correct `select` style inheritance in Firefox 4+ and Opera. */
-/* line 265, ../../sass/base/normalize.sass */
+/* line 269, ../../sass/base/normalize.sass */
 button,
 select {
   text-transform: none;
@@ -294,7 +308,7 @@ select {
  * 2. Correct inability to style clickable `input` types in iOS.
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others. */
-/* line 276, ../../sass/base/normalize.sass */
+/* line 280, ../../sass/base/normalize.sass */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -307,7 +321,7 @@ input[type="submit"] {
 
 /*
  * Re-set default cursor for disabled elements. */
-/* line 288, ../../sass/base/normalize.sass */
+/* line 292, ../../sass/base/normalize.sass */
 button[disabled],
 html input[disabled] {
   cursor: default;
@@ -316,7 +330,7 @@ html input[disabled] {
 /*
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10. */
-/* line 296, ../../sass/base/normalize.sass */
+/* line 300, ../../sass/base/normalize.sass */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -329,7 +343,7 @@ input[type="radio"] {
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof). */
-/* line 308, ../../sass/base/normalize.sass */
+/* line 312, ../../sass/base/normalize.sass */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -342,7 +356,7 @@ input[type="search"] {
 /*
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X. */
-/* line 320, ../../sass/base/normalize.sass */
+/* line 324, ../../sass/base/normalize.sass */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -350,7 +364,7 @@ input[type="search"]::-webkit-search-decoration {
 
 /*
  * Remove inner padding and border in Firefox 4+. */
-/* line 327, ../../sass/base/normalize.sass */
+/* line 331, ../../sass/base/normalize.sass */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -360,7 +374,7 @@ input::-moz-focus-inner {
 /*
  * 1. Remove default vertical scrollbar in IE 8/9.
  * 2. Improve readability and alignment in all browsers. */
-/* line 336, ../../sass/base/normalize.sass */
+/* line 340, ../../sass/base/normalize.sass */
 textarea {
   overflow: auto;
   /* 1 */
@@ -373,13 +387,13 @@ textarea {
  * ========================================================================== */
 /*
  * Remove most spacing between table cells. */
-/* line 349, ../../sass/base/normalize.sass */
+/* line 353, ../../sass/base/normalize.sass */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 353, ../../sass/base/normalize.sass */
+/* line 357, ../../sass/base/normalize.sass */
 .aligncenter {
   text-align: center;
 }
@@ -387,13 +401,14 @@ table {
 /* ==========================================================================
  * Mobile sets
  * ========================================================================== */
-/* line 359, ../../sass/base/normalize.sass */
+/* line 363, ../../sass/base/normalize.sass */
 body * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* line 362, ../../sass/base/normalize.sass */
+/* line 366, ../../sass/base/normalize.sass */
 body {
+  background-color: #65b2e9;
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
   -webkit-user-select: none;

@@ -1,4 +1,8 @@
+// Import compass CSS 3
 @import 'compass/css3'
+
+// Import config 
+@import 'config.sass'
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize
 
@@ -356,10 +360,11 @@ table
 /* ==========================================================================
  * Mobile sets
  * ==========================================================================
-body *
+body * // sad to use this * selector :(
   -webkit-tap-highlight-color: rgba(0,0,0,0) /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 
 body
+  background-color: $main-bg-color
   -webkit-touch-callout: none                /* prevent callout to copy image, etc when tap to hold */
   -webkit-text-size-adjust: none             /* prevent webkit from resizing text to fit */
   -webkit-user-select: none                  /* prevent copy paste, to allow, change 'none' to 'text' */

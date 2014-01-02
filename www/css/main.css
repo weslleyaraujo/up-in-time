@@ -1,3 +1,17 @@
+/* ==========================================================================
+ * Import fonts
+ * ========================================================================== */
+@font-face {
+  font-family: "flex_displaythin";
+  src: url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.eot");
+  src: url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.eot?#iefix") format("embedded-opentype"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.woff") format("woff"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.ttf") format("truetype"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.svg#flex_displaythin") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ==========================================================================
+ * Main colors config
+ * ========================================================================== */
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /* What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
@@ -5,7 +19,7 @@
 /* ==========================================================================
  * Base styles: opinionated defaults
  * ========================================================================== */
-/* line 14, ../sass/main.sass */
+/* line 18, ../sass/main.sass */
 html,
 button,
 input,
@@ -14,7 +28,7 @@ textarea {
   color: #222222;
 }
 
-/* line 21, ../sass/main.sass */
+/* line 25, ../sass/main.sass */
 html {
   font-size: 1em;
   line-height: 1.4;
@@ -23,20 +37,20 @@ html {
 /* Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
  * Customize the background color to match your design. */
-/* line 30, ../sass/main.sass */
+/* line 34, ../sass/main.sass */
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
 }
 
-/* line 34, ../sass/main.sass */
+/* line 38, ../sass/main.sass */
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
 }
 
 /* A better looking default horizontal rule */
-/* line 41, ../sass/main.sass */
+/* line 45, ../sass/main.sass */
 hr {
   display: block;
   height: 1px;
@@ -48,7 +62,7 @@ hr {
 
 /* Remove the gap between images, videos, audio and canvas and the bottom of
  * their containers: h5bp.com/i/440 */
-/* line 53, ../sass/main.sass */
+/* line 57, ../sass/main.sass */
 audio,
 canvas,
 img,
@@ -58,7 +72,7 @@ video {
 }
 
 /* Remove default fieldset styles. */
-/* line 63, ../sass/main.sass */
+/* line 67, ../sass/main.sass */
 fieldset {
   border: 0;
   margin: 0;
@@ -66,7 +80,7 @@ fieldset {
 }
 
 /* Allow only vertical resizing of textareas. */
-/* line 71, ../sass/main.sass */
+/* line 75, ../sass/main.sass */
 textarea {
   resize: vertical;
 }
@@ -74,7 +88,7 @@ textarea {
 /* ==========================================================================
  * Browse Happy prompt
  * ========================================================================== */
-/* line 78, ../sass/main.sass */
+/* line 82, ../sass/main.sass */
 .browsehappy {
   margin: 0.2em 0;
   background: #cccccc;
@@ -86,14 +100,14 @@ textarea {
  * Helper classes
  * ========================================================================== */
 /* Image replacement */
-/* line 91, ../sass/main.sass */
+/* line 95, ../sass/main.sass */
 .ir {
   background-color: transparent;
   border: 0;
   overflow: hidden;
 }
 
-/* line 96, ../sass/main.sass */
+/* line 100, ../sass/main.sass */
 .ir:before {
   content: "";
   display: block;
@@ -102,13 +116,13 @@ textarea {
 }
 
 /* Hide from both screenreaders and browsers: h5bp.com/u */
-/* line 105, ../sass/main.sass */
+/* line 109, ../sass/main.sass */
 .is-hidden {
   display: none !important;
   visibility: hidden;
 }
 
-/* line 109, ../sass/main.sass */
+/* line 113, ../sass/main.sass */
 .wrap {
   width: 1024px;
   margin: 0 auto;
@@ -123,7 +137,7 @@ textarea {
  *    that receive the `clearfix` class.
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements. */
-/* line 124, ../sass/main.sass */
+/* line 128, ../sass/main.sass */
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -132,7 +146,7 @@ textarea {
   /* 2 */
 }
 
-/* line 131, ../sass/main.sass */
+/* line 135, ../sass/main.sass */
 .clearfix:after {
   clear: both;
 }
@@ -216,27 +230,100 @@ textarea {
   transform: translate3d(0, 0, 0);
 }
 
-/* line 37, ../sass/no-modular/helpers.sass */
-.index {
-  background: red;
-}
-
-/* line 40, ../sass/no-modular/helpers.sass */
-.test {
-  background: green;
-}
-
 /* line 3, ../sass/layout/_header.sass */
 .l-header {
-  min-height: 165px;
+  display: block;
 }
 
 /* line 3, ../sass/layout/_content.sass */
 .l-content {
-  min-height: 630px;
+  display: block;
 }
 
 /* line 4, ../sass/states/states.sass */
 .is-visible {
   display: block !important;
+}
+
+/* ==========================================================================
+ * Module: main-logo
+ * ========================================================================== */
+/* line 7, ../sass/module/main-logo/module.sass */
+.main-logo {
+  margin: 5% auto;
+  display: block;
+  width: 80%;
+}
+
+/* ==========================================================================
+ * Module: template
+ * ========================================================================== */
+/* line 7, ../sass/module/template/module.sass */
+.template {
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.5% 0;
+}
+
+/* ==========================================================================
+ * Module: btn
+ * ========================================================================== */
+@font-face {
+  font-family: "flex_displaythin";
+  src: url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.eot");
+  src: url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.eot?#iefix") format("embedded-opentype"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.woff") format("woff"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.ttf") format("truetype"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.svg#flex_displaythin") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ==========================================================================
+ * Import fonts
+ * ========================================================================== */
+@font-face {
+  font-family: "flex_displaythin";
+  src: url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.eot");
+  src: url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.eot?#iefix") format("embedded-opentype"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.woff") format("woff"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.ttf") format("truetype"), url("/sass/fonts/flexdisplay/flexdisplay-thin-webfont.svg#flex_displaythin") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ==========================================================================
+ * Main colors config
+ * ========================================================================== */
+/* line 20, ../sass/module/btn/module.sass */
+.btn {
+  display: block;
+  background-image: none;
+  background-color: white;
+  color: #646464;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  width: 90%;
+  font-family: flex_displaythin;
+  font-size: 50px;
+  font-weight: normal;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+/* line 36, ../sass/module/btn/module.sass */
+.btn:active {
+  background-color: #e5e5e5;
+  color: #737373;
+}
+
+/* ==========================================================================
+ * Page specific styles
+ * ========================================================================== */
+/* line 11, ../sass/no-modular/pages.sass */
+.template.index .btn {
+  margin-top: 15%;
 }

@@ -39,13 +39,13 @@ define(function (require){
     // views methods
     views: {
       index: function () {
-        var view = new upintime.Views.Index();
-        if (actual.$view) {
-          actual.$oldView = actual.$view;
-        }
-        actual.$view = view.$el;
-        elements.$main.append(view.el);
-        _private.slideIn();
+        // var view = new upintime.Views.Index();
+        // if (actual.$view) {
+        //   actual.$oldView = actual.$view;
+        // }
+        // actual.$view = view.$el;
+        // elements.$main.append(view.el);
+        // _private.slideIn();
       }
     }
   };

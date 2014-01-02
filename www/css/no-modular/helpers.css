@@ -73,13 +73,3 @@
   -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-
-/* line 37, ../../sass/no-modular/helpers.sass */
-.index {
-  background: red;
-}
-
-/* line 40, ../../sass/no-modular/helpers.sass */
-.test {
-  background: green;
-}

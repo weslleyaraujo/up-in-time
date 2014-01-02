@@ -1,0 +1,38 @@
+/* ==========================================================================
+ * Module: btn
+ * ==========================================================================
+// import compass/css3
+@import 'compass/css3'
+
+// import font
+@import 'fonts/flexdisplay/font.sass'
+
+// Import config 
+@import 'config.sass'
+
+$module-name: 'btn'
+$default-background-color: #FFF
+$default-color: #646464
+$default-width: 90%
+$default-font-size: 50px
+$default-radius: 10px
+
+.#{$module-name}
+  display: block
+  background-image: none 
+  background-color: $default-background-color
+  color: $default-color
+  margin: 0 auto
+  text-align: center
+  vertical-align: middle
+  cursor: pointer
+  border: 1px solid transparent
+  white-space: nowrap
+  width: $default-width
+  font-family: flex_displaythin
+  font-size: $default-font-size
+  font-weight: normal
+  +border-radius ($default-radius)
+  &:active
+    background-color: shade($default-background-color, 10%)
+    color: tint($default-color, 10%)
