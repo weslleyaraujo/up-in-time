@@ -10,7 +10,9 @@ require.config({
     text: 'requirejs-text/text',
     
     // views
+    index: '../js/upintime/views/index',
     settings: '../js/upintime/views/settings',
+    choose: '../js/upintime/views/choose',
     
     // app
     upintime: '../js/upintime/upintime',

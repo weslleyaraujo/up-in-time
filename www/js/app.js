@@ -20,23 +20,44 @@ define(function (require){
     },
 
     bindRoutes: function () {
+      upintime.Helpers.events.on('index', _private.views.index);
       upintime.Helpers.events.on('settings', _private.views.settings);
+      upintime.Helpers.events.on('choose', _private.views.choose);
     },
 
     showActualView: function () {
       actual.$view.addClass('is-visible');
     },
 
-    // the user has settings already?
-    issetConfig: function () {
-      if(!true) {
-        // upintime.Helpers.events.trigger('settings');
+    // main calculate method
+    calculate: function () {
+      if(false) {
+        alert('Something wrong with validation'); 
         return;
       }
 
-      Backbone.history.navigate('settings', {
-        trigger: true 
+      Backbone.history.navigate('choose', {
+        trigger: true
       });
+    },
+    
+    // the user has allreay calculated the time?
+    issetTime: function () {
+      if(false) {
+        return true;
+      }
+
+      return false;
+    },
+
+    // the user has settings work times already?
+    issetConfig: function () {
+      if(!true) {
+        return false;
+      }
+
+      return true;
+
     },
    
     // change view settings
@@ -54,7 +75,9 @@ define(function (require){
       }
       setTimeout(function () {
         _private.showActualView();
-        actual.$oldView.remove();
+        if (actual.$oldView) {
+          actual.$oldView.remove(); 
+        }
       }, 30);
     },
 
@@ -64,8 +87,52 @@ define(function (require){
         var settings = require('settings');
         _private.changeView(new settings());
         _private.slideIn();
+
+        // get settings elements
+        elements.$nextButton = $('#next-button');
+
+        // trigguer elements
+        elements.$nextButton.on('click', _private.calculate);
+      },
+
+      index: function () {
+        // is the user has now config yet and not set the time of the day
+        if (!_private.issetTime()) {
+          console.log('the index page');
+
+          var index = require('index');
+          _private.changeView(new index());
+          _private.slideIn();
+
+          // get index elements
+          elements.$startButton = $('#start-button');
+
+          // bind elements
+          elements.$startButton.on('click', function () {
+            Backbone.history.navigate('settings', {
+              trigger: true 
+            });
+          });
+        }
+        // if the user has already set the time of the day
+        else if (_private.issetTime()) {
+          // send to final time 
+          console.log('the final time page');
+        }
+        else {
+          // calculate and send to choose time 
+          console.log('the choose time page');
+        }
+      },
+
+      choose: function () {
+        var choose = require('choose');
+        _private.changeView(new choose());
+        _private.slideIn();
       }
+
     }
+
   };
 
   // app methods
@@ -77,13 +144,10 @@ define(function (require){
 
     setDom: function () {
       elements.$main = $('#main-content');
-      elements.$startButton = $('#start-button');
-      actual.$view = $('.template.index');  
     },
 
     bind: function () {
       _private.router();
-      elements.$startButton.on('click', _private.issetConfig);
     }, 
 
     go: function (view) {
@@ -100,6 +164,11 @@ define(function (require){
       this.$el.append( next.$el );
       next.transitionIn();
       this.currentPage = next;
+    },
+
+    startHanler: function () {
+      if (!_private.issetConfig()) {
+      }
     }
   }
 

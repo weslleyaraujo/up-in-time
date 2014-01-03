@@ -17,12 +17,23 @@ define(function (require){
   // setting routes
   upintime.Router = Backbone.Router.extend({
     routes: {
+      '': 'index',
       'settings': 'settings',
+      'choose': 'choose',
+    },
+
+    index: function () {
+       upintime.Helpers.events.trigger('index');
     },
 
     settings: function () {
        upintime.Helpers.events.trigger('settings');
+    },
+
+    choose: function () {
+       upintime.Helpers.events.trigger('choose');
     }
+
   });
   
   return upintime;
