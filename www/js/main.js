@@ -6,9 +6,11 @@ require.config({
     jquery: 'jquery/jquery',
     backbone: 'backbone/backbone',
     underscore: 'underscore/underscore',
+    fastclick: 'fastclick/lib/fastclick',
+    text: 'requirejs-text/text',
     
     // views
-    index: '../js/upintime/views/index',
+    settings: '../js/upintime/views/settings',
     
     // app
     upintime: '../js/upintime/upintime',
@@ -27,14 +29,27 @@ require.config({
       deps: ['underscore'],
       exports: 'Backbone'
     },
+
+    // views
+    'settings': {
+      deps: ['backbone']
+    },
     
     // app
     'upintime': {
       // setting all deps of app
-      deps: ['index']
+      deps: [
+        'fastclick',
+        'text',
+
+        // views
+        'settings'
+      ]
     },
     'app': {
-      deps: ['upintime'],
+      deps: [
+        'upintime'
+      ],
       exports: 'app'
     }
   }

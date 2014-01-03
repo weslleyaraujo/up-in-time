@@ -5,3 +5,7 @@
 .template.index .btn {
   margin-top: 15%;
 }
+/* line 15, ../../sass/no-modular/pages.sass */
+.template.settings {
+  background-color: red;
+}

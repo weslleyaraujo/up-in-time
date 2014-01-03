@@ -1,5 +1,5 @@
 {
-  "name": "Hello time",
+  "name": "Up In Time",
   "version": "0.0.1",
   "authors": [
     "Weslley Araujo <weslleyaraujo20@gmail.com>"
@@ -25,6 +25,8 @@
     "jquery": "*",
     "underscore": "*",
     "backbone": "*",
-    "requirejs": "*"
+    "requirejs": "*",
+    "requirejs-text": "*",
+    "fastclick": "*"
   }
 }

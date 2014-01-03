@@ -17,39 +17,13 @@ define(function (require){
   // setting routes
   upintime.Router = Backbone.Router.extend({
     routes: {
-      '': 'index',
-      'test': 'test'
+      'settings': 'settings',
     },
 
-    index: function () {
-       upintime.Helpers.events.trigger('index');
-     },
-
-    test: function () {
-       upintime.Helpers.events.trigger('test');
+    settings: function () {
+       upintime.Helpers.events.trigger('settings');
     }
   });
   
-  upintime.Views.Index = Backbone.View.extend({
-    className: 'index page',
-    initialize: function () {
-      this.render();
-    },
-    render: function () {
-      var template = _.template($('script[name=index]').html());
-      this.$el.html(template());
-    }
-  });
-
-  upintime.Views.Test = Backbone.View.extend({
-    className: 'test page',
-    initialize: function () {
-      this.render();
-    },
-    render: function () {
-      var template = _.template($('script[name=test]').html());
-      this.$el.html(template());
-    }
-  });
   return upintime;
 });

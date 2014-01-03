@@ -20,32 +20,50 @@ define(function (require){
     },
 
     bindRoutes: function () {
-      upintime.Helpers.events.on('index', _private.views.index);
-    },
-
-    slideIn: function () {
-      if (actual.$oldView)  {
-        actual.$view.removeClass('is-visible');
-      }
-      setTimeout(function () {
-        _private.showActualView();
-      }, 300);
+      upintime.Helpers.events.on('settings', _private.views.settings);
     },
 
     showActualView: function () {
       actual.$view.addClass('is-visible');
     },
-    
+
+    // the user has settings already?
+    issetConfig: function () {
+      if(!true) {
+        // upintime.Helpers.events.trigger('settings');
+        return;
+      }
+
+      Backbone.history.navigate('settings', {
+        trigger: true 
+      });
+    },
+   
+    // change view settings
+    changeView: function (view) {
+      if (actual.$view) {
+        actual.$oldView = actual.$view;
+      }
+      actual.$view = view.$el;
+      elements.$main.append(view.el);
+    },
+
+    slideIn: function () {
+      if (actual.$oldView)  {
+        actual.$oldView.removeClass('is-visible');
+      }
+      setTimeout(function () {
+        _private.showActualView();
+        actual.$oldView.remove();
+      }, 30);
+    },
+
     // views methods
     views: {
-      index: function () {
-        // var view = new upintime.Views.Index();
-        // if (actual.$view) {
-        //   actual.$oldView = actual.$view;
-        // }
-        // actual.$view = view.$el;
-        // elements.$main.append(view.el);
-        // _private.slideIn();
+      settings: function () {
+        var settings = require('settings');
+        _private.changeView(new settings());
+        _private.slideIn();
       }
     }
   };
@@ -59,10 +77,13 @@ define(function (require){
 
     setDom: function () {
       elements.$main = $('#main-content');
+      elements.$startButton = $('#start-button');
+      actual.$view = $('.template.index');  
     },
 
     bind: function () {
       _private.router();
+      elements.$startButton.on('click', _private.issetConfig);
     }, 
 
     go: function (view) {
