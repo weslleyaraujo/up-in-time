@@ -4,13 +4,13 @@
 /* ==========================================================================
  * Main colors config
  * ========================================================================== */
-/* line 17, ../../../sass/module/btn/module.sass */
+/* line 18, ../../../sass/module/btn/module.sass */
 .btn {
   display: block;
   background-image: none;
   background-color: rgba(255, 255, 255, 0.4);
   color: white;
-  margin: 0 auto;
+  margin: 5% auto;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -27,7 +27,7 @@
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 34, ../../../sass/module/btn/module.sass */
+/* line 35, ../../../sass/module/btn/module.sass */
 .btn:active {
   background-color: rgba(176, 176, 176, 0.46);
   color: white;

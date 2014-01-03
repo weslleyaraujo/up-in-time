@@ -210,7 +210,7 @@ textarea {
  * ========================================================================== */
 /* line 7, ../sass/module/main-logo/module.sass */
 .main-logo {
-  margin: 5% auto;
+  margin: 5% auto 10% auto;
   display: block;
   width: 80%;
 }
@@ -257,13 +257,13 @@ textarea {
 /* ==========================================================================
  * Main colors config
  * ========================================================================== */
-/* line 17, ../sass/module/btn/module.sass */
+/* line 18, ../sass/module/btn/module.sass */
 .btn {
   display: block;
   background-image: none;
   background-color: rgba(255, 255, 255, 0.4);
   color: white;
-  margin: 0 auto;
+  margin: 5% auto;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -280,7 +280,7 @@ textarea {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 34, ../sass/module/btn/module.sass */
+/* line 35, ../sass/module/btn/module.sass */
 .btn:active {
   background-color: rgba(176, 176, 176, 0.46);
   color: white;
@@ -344,13 +344,72 @@ textarea {
 }
 
 /* ==========================================================================
- * Page specific styles
+ * Module: time-result
  * ========================================================================== */
-/* line 11, ../sass/no-modular/pages.sass */
-.template.index .btn {
-  margin-top: 15%;
+/* line 8, ../sass/module/time-result/module.sass */
+.time-result {
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding: 4% 0;
 }
-/* line 16, ../sass/no-modular/pages.sass */
-.template.settings .btn {
-  margin-top: 10%;
+
+/* line 14, ../sass/module/time-result/module.sass */
+.time-result-body {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  font-size: 35px;
+}
+
+/* line 21, ../sass/module/time-result/module.sass */
+.time-result-radio {
+  position: absolute;
+  left: 0;
+  top: 33%;
+}
+
+/* line 26, ../sass/module/time-result/module.sass */
+.time-result-hour {
+  margin: 0;
+}
+
+/* ==========================================================================
+ * Theme for: time-result
+ * Name: Minimum
+ * ========================================================================== */
+/* line 14, ../sass/themes/time-result/minimum.sass */
+.time-result.minimum {
+  background-color: #ffda00;
+}
+/* line 16, ../sass/themes/time-result/minimum.sass */
+.time-result.minimum .time-result-hour {
+  text-shadow: 1px 1px 1px #ccae00;
+}
+
+/* ==========================================================================
+ * Theme for: time-result
+ * Name: Normal
+ * ========================================================================== */
+/* line 14, ../sass/themes/time-result/normal.sass */
+.time-result.normal {
+  background-color: #6dcb99;
+}
+/* line 16, ../sass/themes/time-result/normal.sass */
+.time-result.normal .time-result-hour {
+  text-shadow: 1px 1px 1px #57a27a;
+}
+
+/* ==========================================================================
+ * Theme for: time-result
+ * Name: Maximum
+ * ========================================================================== */
+/* line 14, ../sass/themes/time-result/maximum.sass */
+.time-result.maximum {
+  background-color: #f14751;
+}
+/* line 16, ../sass/themes/time-result/maximum.sass */
+.time-result.maximum .time-result-hour {
+  text-shadow: 1px 1px 1px #c03840;
 }

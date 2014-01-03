@@ -1,0 +1,32 @@
+/* ==========================================================================
+ * Module: time-result
+ * ========================================================================== */
+/* line 8, ../../../sass/themes/time-result/module.sass */
+.time-result {
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding: 4% 0;
+  background: red;
+}
+
+/* line 15, ../../../sass/themes/time-result/module.sass */
+.time-result-body {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  font-size: 35px;
+}
+
+/* line 22, ../../../sass/themes/time-result/module.sass */
+.time-result-radio {
+  position: absolute;
+  left: 0;
+  top: 33%;
+}
+
+/* line 27, ../../../sass/themes/time-result/module.sass */
+.time-result-hour {
+  margin: 0;
+}

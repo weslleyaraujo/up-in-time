@@ -1,0 +1,17 @@
+/* ==========================================================================
+ * Theme for: time-result
+ * Name: Minimum
+ * ==========================================================================
+
+$module-name: 'time-result'
+$theme-name: 'minimum'
+
+// theme colors
+$theme-main-color: #FFDA00
+$theme-shadow-color: shade($theme-main-color, 20%)
+
+.#{$module-name}
+  &.#{$theme-name}
+    background-color: $theme-main-color 
+    .#{$module-name}-hour
+      +text-shadow(1px 1px 1px $theme-shadow-color)

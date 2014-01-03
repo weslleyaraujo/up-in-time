@@ -3,7 +3,7 @@
  * ========================================================================== */
 /* line 7, ../../../sass/module/main-logo/module.sass */
 .main-logo {
-  margin: 5% auto;
+  margin: 5% auto 10% auto;
   display: block;
   width: 80%;
 }
