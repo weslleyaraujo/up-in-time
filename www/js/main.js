@@ -46,6 +46,7 @@ require.config({
         'settings'
       ]
     },
+    
     'app': {
       deps: [
         'upintime'

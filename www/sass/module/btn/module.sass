@@ -4,18 +4,15 @@
 // import compass/css3
 @import 'compass/css3'
 
-// import font
-@import 'fonts/flexdisplay/font.sass'
-
 // Import config 
 @import 'config.sass'
 
 $module-name: 'btn'
-$default-background-color: #FFF
-$default-color: #646464
+$default-background-color: rgba(255, 255, 255, 0.4)
+$default-color: #FFF
 $default-width: 90%
-$default-font-size: 50px
-$default-radius: 10px
+$default-font-size: 35px
+$default-radius: 5px
 
 .#{$module-name}
   display: block
@@ -29,9 +26,10 @@ $default-radius: 10px
   border: 1px solid transparent
   white-space: nowrap
   width: $default-width
-  font-family: flex_displaythin
+  font-family: Verdana
   font-size: $default-font-size
   font-weight: normal
+  padding: 2% 0
   +border-radius ($default-radius)
   &:active
     background-color: shade($default-background-color, 10%)

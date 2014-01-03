@@ -1,0 +1,41 @@
+/* ==========================================================================
+ * Module: field
+ * ========================================================================== */
+/* ==========================================================================
+ * Main colors config
+ * ========================================================================== */
+/* line 13, ../../../sass/module/field/module.sass */
+.field {
+  display: block;
+  margin: 0.3% auto 1% auto;
+  width: 90%;
+  font-family: arial;
+}
+
+/* line 19, ../../../sass/module/field/module.sass */
+.field-label {
+  font-size: 20px;
+  font-family: arial;
+}
+
+/* line 23, ../../../sass/module/field/module.sass */
+.field-input {
+  border: none;
+  display: block;
+  clear: both;
+  width: 96%;
+  font-size: 20px;
+  padding: 10px 2%;
+  font-family: arial;
+  text-align: right;
+  border: 1px solid;
+  border-color: #5fa9dd;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}

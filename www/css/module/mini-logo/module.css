@@ -1,0 +1,14 @@
+/* ==========================================================================
+ * Module: mini-logo
+ * ========================================================================== */
+/* line 8, ../../../sass/module/mini-logo/module.sass */
+.mini-logo {
+  text-align: center;
+  margin: 2% auto 7% auto;
+}
+
+/* line 12, ../../../sass/module/mini-logo/module.sass */
+.mini-logo-description {
+  margin: 5px auto;
+  font-size: 45px;
+}

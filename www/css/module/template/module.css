@@ -1,11 +1,11 @@
 /*
 Syntax error: Undefined mixin 'transition'.
-        on line 19 of /Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass, in `transition'
-        from line 19 of /Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass
+        on line 16 of /Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass, in `transition'
+        from line 16 of /Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass
 
 Backtrace:
-/Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass:19:in `transition'
-/Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass:19
+/Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass:16:in `transition'
+/Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass:16
 /Library/Ruby/Gems/2.0.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:253:in `visit_mixin'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.2.13/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.2.13/lib/sass/tree/visitors/perform.rb:100:in `visit'
@@ -74,4 +74,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'transition'.\A         on line 19 of /Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass, in `transition'\A         from line 19 of /Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass"; }
+  content: "Syntax error: Undefined mixin 'transition'.\A         on line 16 of /Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass, in `transition'\A         from line 16 of /Users/weslleyaraujo/Documents/Projects/UpInTime/uppintime/www/sass/module/template/module.sass"; }

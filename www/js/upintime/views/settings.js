@@ -5,9 +5,8 @@ define(['text!../views/settings.html'], function (html){
       this.render();
     },
     render: function () {
-      // var template = _.template($('script[name=test]').html());
-      // this.$el.html(template());
-      this.$el.html('aeaeae');
+      var template = _.template(html);
+      this.$el.html(template());
     }
   });
 });

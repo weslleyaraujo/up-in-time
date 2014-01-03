@@ -1,0 +1,35 @@
+/* ==========================================================================
+ * Module: field
+ * ==========================================================================
+// import compass/css3
+@import 'compass/css3'
+
+// Import config 
+@import 'config.sass'
+
+$module-name: 'field'
+$default-font-size: 20px
+
+.#{$module-name}
+  display: block
+  margin: 0.3% auto 1% auto
+  width: 90%
+  font-family: arial
+
+.#{$module-name}-label
+  font-size: $default-font-size
+  font-family: arial
+
+.#{$module-name}-input
+  border: none
+  display: block
+  clear: both
+  width: 96%
+  font-size: $default-font-size
+  padding: 10px 2%
+  font-family: arial
+  text-align: right
+  border: 1px solid
+  border-color: shade($main-bg-color, 5%)
+  +appearance(none)
+  +border-radius(5px)
