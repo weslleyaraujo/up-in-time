@@ -142,10 +142,15 @@ define(function (require){
         _private.slideIn();
 
         // get settings elements
-        elements.$nextButton = $('#next-button');
+        elements.$doneButton = $('#done-button');
+        elements.$timeResults = $('.time-result-radio');
 
         // trigguer elements
-        elements.$nextButton.on('click', _private.setNotification);
+        elements.$doneButton.on('click', _private.setNotification);
+        elements.$timeResults.on('change', function () {
+          elements.$timeResults.closest('.time-result').removeClass('is-checked');
+          $(this).closest('.time-result').addClass('is-checked');
+        });
       },
 
       done: function () {

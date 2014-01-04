@@ -1,5 +1,5 @@
 /* ==========================================================================
- * Main colors config
+ * Main variables config
  * ========================================================================== */
 @font-face {
   font-family: "dolce_vita_lightsuper_light";
@@ -226,7 +226,10 @@ textarea {
 /* ==========================================================================
  * Module: template
  * ========================================================================== */
-/* line 7, ../sass/module/template/module.sass */
+/* ==========================================================================
+ * Main variables config
+ * ========================================================================== */
+/* line 13, ../sass/module/template/module.sass */
 .template {
   display: block;
   width: 100%;
@@ -248,7 +251,7 @@ textarea {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 19, ../sass/module/template/module.sass */
+/* line 25, ../sass/module/template/module.sass */
 .template.is-visible {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
@@ -263,7 +266,7 @@ textarea {
  * Module: btn
  * ========================================================================== */
 /* ==========================================================================
- * Main colors config
+ * Main variables config
  * ========================================================================== */
 /* line 18, ../sass/module/btn/module.sass */
 .btn {
@@ -319,7 +322,7 @@ textarea {
  * Module: field
  * ========================================================================== */
 /* ==========================================================================
- * Main colors config
+ * Main variables config
  * ========================================================================== */
 /* line 13, ../sass/module/field/module.sass */
 .field {
@@ -360,15 +363,24 @@ textarea {
 /* ==========================================================================
  * Module: time-result
  * ========================================================================== */
-/* line 8, ../sass/module/time-result/module.sass */
+/* line 11, ../sass/module/time-result/module.sass */
 .time-result {
   display: block;
   width: 100%;
   text-align: right;
   padding: 4% 0;
+  border-top: 1px solid;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+/* line 20, ../sass/module/time-result/module.sass */
+.time-result.is-checked {
+  outline: 5px solid;
 }
 
-/* line 14, ../sass/module/time-result/module.sass */
+/* line 23, ../sass/module/time-result/module.sass */
 .time-result-body {
   width: 90%;
   display: block;
@@ -377,23 +389,26 @@ textarea {
   font-size: 35px;
 }
 
-/* line 21, ../sass/module/time-result/module.sass */
+/* line 30, ../sass/module/time-result/module.sass */
 .time-result-radio {
-  position: absolute;
-  left: 0;
-  top: 33%;
+  display: none;
 }
 
-/* line 26, ../sass/module/time-result/module.sass */
+/* line 33, ../sass/module/time-result/module.sass */
 .time-result-hour {
   margin: 0;
+  position: relative;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
 }
 
 /* ==========================================================================
  * Module: main-time
  * ========================================================================== */
 /* ==========================================================================
- * Main colors config
+ * Main variables config
  * ========================================================================== */
 /* line 13, ../sass/module/main-time/module.sass */
 .main-time {
@@ -420,24 +435,24 @@ textarea {
  * ========================================================================== */
 /* line 7, ../sass/module/time-elapsed/module.sass */
 .time-elapsed {
-  font-size: 35px;
+  font-size: 30px;
   text-align: center;
-  margin: 10% 0;
+  margin: 10% 15% 0;
 }
 
 /* ==========================================================================
  * Module: progress-bar
  * ========================================================================== */
 /* ==========================================================================
- * Main colors config
+ * Main variables config
  * ========================================================================== */
-/* line 12, ../sass/module/progress-bar/module.sass */
+/* line 15, ../sass/module/progress-bar/module.sass */
 .progress-bar {
   width: 90%;
   margin: 0 auto;
 }
 
-/* line 16, ../sass/module/progress-bar/module.sass */
+/* line 19, ../sass/module/progress-bar/module.sass */
 .progress-bar-outside {
   width: 100%;
   background: #467ca3;
@@ -446,7 +461,7 @@ textarea {
   position: relative;
 }
 
-/* line 23, ../sass/module/progress-bar/module.sass */
+/* line 26, ../sass/module/progress-bar/module.sass */
 .progress-bar-inside {
   background: white;
   position: absolute;
@@ -462,14 +477,68 @@ textarea {
 }
 
 /* ==========================================================================
+ * Module: footer-bar
+ * ========================================================================== */
+/* ==========================================================================
+ * Main variables config
+ * ========================================================================== */
+/* line 11, ../sass/module/footer-bar/module.sass */
+.footer-bar {
+  background-color: white;
+  margin-bottom: -2.5%;
+  padding: 2% 0;
+}
+
+/* line 16, ../sass/module/footer-bar/module.sass */
+.footer-bar-body {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+ * Module: icon-btn
+ * ========================================================================== */
+/* ==========================================================================
+ * Main variables config
+ * ========================================================================== */
+/* line 10, ../sass/module/icon-btn/module.sass */
+.icon-btn {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  text-align: center;
+}
+/* line 14, ../sass/module/icon-btn/module.sass */
+.icon-btn.is-at-right {
+  float: right;
+}
+
+/* line 17, ../sass/module/icon-btn/module.sass */
+.icon-btn-image {
+  width: 40px;
+}
+
+/* line 20, ../sass/module/icon-btn/module.sass */
+.icon-btn-text {
+  clear: both;
+  display: block;
+  font-size: 11px;
+  color: #65b2e9;
+}
+
+/* ==========================================================================
  * Theme for: time-result
  * Name: Minimum
  * ========================================================================== */
-/* line 14, ../sass/themes/time-result/minimum.sass */
+/* line 17, ../sass/themes/time-result/minimum.sass */
 .time-result.minimum {
   background-color: #ffda00;
+  border-color: #ccae00;
 }
-/* line 16, ../sass/themes/time-result/minimum.sass */
+/* line 20, ../sass/themes/time-result/minimum.sass */
 .time-result.minimum .time-result-hour {
   text-shadow: 1px 1px 1px #ccae00;
 }
@@ -478,11 +547,12 @@ textarea {
  * Theme for: time-result
  * Name: Normal
  * ========================================================================== */
-/* line 14, ../sass/themes/time-result/normal.sass */
+/* line 17, ../sass/themes/time-result/normal.sass */
 .time-result.normal {
   background-color: #6dcb99;
+  border-color: #57a27a;
 }
-/* line 16, ../sass/themes/time-result/normal.sass */
+/* line 20, ../sass/themes/time-result/normal.sass */
 .time-result.normal .time-result-hour {
   text-shadow: 1px 1px 1px #57a27a;
 }
@@ -491,11 +561,13 @@ textarea {
  * Theme for: time-result
  * Name: Maximum
  * ========================================================================== */
-/* line 14, ../sass/themes/time-result/maximum.sass */
+/* line 17, ../sass/themes/time-result/maximum.sass */
 .time-result.maximum {
   background-color: #f14751;
+  border-color: #c03840;
+  border-bottom: 1px solid #c03840;
 }
-/* line 16, ../sass/themes/time-result/maximum.sass */
+/* line 21, ../sass/themes/time-result/maximum.sass */
 .time-result.maximum .time-result-hour {
   text-shadow: 1px 1px 1px #c03840;
 }

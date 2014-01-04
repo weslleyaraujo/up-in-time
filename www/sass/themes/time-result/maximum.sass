@@ -3,6 +3,9 @@
  * Name: Maximum
  * ==========================================================================
 
+// Import compass CSS 3
+@import 'compass/css3'
+
 $module-name: 'time-result'
 $theme-name: 'maximum'
 
@@ -13,5 +16,7 @@ $theme-shadow-color: shade($theme-main-color, 20%)
 .#{$module-name}
   &.#{$theme-name}
     background-color: $theme-main-color 
+    border-color: $theme-shadow-color
+    border-bottom: 1px solid $theme-shadow-color
     .#{$module-name}-hour
       +text-shadow(1px 1px 1px $theme-shadow-color)

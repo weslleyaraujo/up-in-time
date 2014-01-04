@@ -1,0 +1,24 @@
+/* ==========================================================================
+ * Module: icon-btn
+ * ==========================================================================
+
+// import config 
+@import 'config.sass'
+
+$module-name: 'icon-btn'
+
+.#{$module-name}
+  +inline-block
+  text-align: center
+  // states
+  &.is-at-right
+    float: right
+
+.#{$module-name}-image
+  width: 40px
+
+.#{$module-name}-text
+  clear: both
+  display: block
+  font-size: 11px
+  color: $main-bg-color

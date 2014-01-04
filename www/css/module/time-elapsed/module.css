@@ -3,7 +3,7 @@
  * ========================================================================== */
 /* line 7, ../../../sass/module/time-elapsed/module.sass */
 .time-elapsed {
-  font-size: 35px;
+  font-size: 30px;
   text-align: center;
-  margin: 10% 0;
+  margin: 10% 15% 0;
 }

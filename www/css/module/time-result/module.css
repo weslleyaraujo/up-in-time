@@ -1,15 +1,24 @@
 /* ==========================================================================
  * Module: time-result
  * ========================================================================== */
-/* line 8, ../../../sass/module/time-result/module.sass */
+/* line 11, ../../../sass/module/time-result/module.sass */
 .time-result {
   display: block;
   width: 100%;
   text-align: right;
   padding: 4% 0;
+  border-top: 1px solid;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+/* line 20, ../../../sass/module/time-result/module.sass */
+.time-result.is-checked {
+  outline: 5px solid;
 }
 
-/* line 14, ../../../sass/module/time-result/module.sass */
+/* line 23, ../../../sass/module/time-result/module.sass */
 .time-result-body {
   width: 90%;
   display: block;
@@ -18,14 +27,17 @@
   font-size: 35px;
 }
 
-/* line 21, ../../../sass/module/time-result/module.sass */
+/* line 30, ../../../sass/module/time-result/module.sass */
 .time-result-radio {
-  position: absolute;
-  left: 0;
-  top: 33%;
+  display: none;
 }
 
-/* line 26, ../../../sass/module/time-result/module.sass */
+/* line 33, ../../../sass/module/time-result/module.sass */
 .time-result-hour {
   margin: 0;
+  position: relative;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
 }

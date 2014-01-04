@@ -2,13 +2,19 @@
  * Module: template
  * ==========================================================================
 
+// Import compass CSS 3
+@import 'compass/css3'
+
+// import config 
+@import 'config.sass'
+
 $module-name: 'template'
 
 .#{$module-name}
   display: block
   width: 100%
   height: 100%
-  padding: 2.5% 0
+  padding: $default-page-padding 0
   top: 0
   right: 0
   bottom: 0

@@ -2,6 +2,9 @@
  * Module: time-result
  * ==========================================================================
 
+// Import compass CSS 3
+@import 'compass/css3'
+
 $module-name: 'time-result'
 $default-font-size: 35px
 
@@ -10,6 +13,12 @@ $default-font-size: 35px
   width: 100%
   text-align: right
   padding: 4% 0
+  border-top: 1px solid
+  +transition(0.3s)
+
+  // states
+  &.is-checked
+    outline: 5px solid
 
 .#{$module-name}-body
   width: 90%
@@ -19,9 +28,9 @@ $default-font-size: 35px
   font-size: $default-font-size
 
 .#{$module-name}-radio
-  position: absolute
-  left: 0
-  top: 33%
+  display: none
 
 .#{$module-name}-hour
   margin: 0
+  position: relative
+  +transition(0.1s)
