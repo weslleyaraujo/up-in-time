@@ -17,22 +17,6 @@ define(function (require){
 
   // _private methods 
   _private = {
-    
-    // main calculate method
-    controller: {
-      calculate: function (event) {
-        event && event.preventDefault();
-
-        // save user settings
-        _private.controller.saveSettings();
-
-        // send to choose page 
-        Backbone.history.navigate('choose', {
-          trigger: true
-        });
-      }
-    },
-
     router: function () {
       actual.router = new upintime.Router();
       _private.bindRoutes();
@@ -90,15 +74,6 @@ define(function (require){
       }, 30);
     },
 
-    setNotification: function () {
-      // set notification logic
-      
-      // send to done page 
-      Backbone.history.navigate('done', {
-        trigger: true
-      });
-    },
-
     // views methods
     views: {
       index: function () {
@@ -129,17 +104,6 @@ define(function (require){
       choose: function () {
         _private.changeView(new upintime.Views.choose());
         _private.slideIn();
-
-        // get settings elements
-        elements.$doneButton = $('#done-button');
-        elements.$timeResults = $('.time-result-radio');
-
-        // trigguer elements
-        elements.$doneButton.on('click', _private.setNotification);
-        elements.$timeResults.on('change', function () {
-          elements.$timeResults.closest('.time-result').removeClass('is-checked');
-          $(this).closest('.time-result').addClass('is-checked');
-        });
       },
 
       done: function () {
