@@ -1,0 +1,31 @@
+/* ==========================================================================
+ * Module: progress-bar
+ * ==========================================================================
+
+// import config 
+@import 'config.sass'
+
+$module-name: 'progress-bar'
+$default-background-color: shade($main-bg-color, 30%)
+$default-progress-background-color: #FFF
+
+.#{$module-name}
+  width: 90%
+  margin: 0 auto
+
+.#{$module-name}-outside
+  width: 100%
+  background: $default-background-color
+  height: 5px
+  border-radius: 35px
+  position: relative
+
+.#{$module-name}-inside
+  background: $default-progress-background-color
+  position: absolute
+  left: 0
+  top: 0
+  border-radius: 35px
+  height: 5px
+  max-width: 100%
+  +transition(0.3s)

@@ -418,6 +418,49 @@ textarea {
 /* ==========================================================================
  * Module: time-elapsed
  * ========================================================================== */
+/* line 7, ../sass/module/time-elapsed/module.sass */
+.time-elapsed {
+  font-size: 35px;
+  text-align: center;
+  margin: 10% 0;
+}
+
+/* ==========================================================================
+ * Module: progress-bar
+ * ========================================================================== */
+/* ==========================================================================
+ * Main colors config
+ * ========================================================================== */
+/* line 12, ../sass/module/progress-bar/module.sass */
+.progress-bar {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* line 16, ../sass/module/progress-bar/module.sass */
+.progress-bar-outside {
+  width: 100%;
+  background: #467ca3;
+  height: 5px;
+  border-radius: 35px;
+  position: relative;
+}
+
+/* line 23, ../sass/module/progress-bar/module.sass */
+.progress-bar-inside {
+  background: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 35px;
+  height: 5px;
+  max-width: 100%;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
 /* ==========================================================================
  * Theme for: time-result
  * Name: Minimum
