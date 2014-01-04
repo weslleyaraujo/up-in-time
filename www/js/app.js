@@ -9,7 +9,7 @@ define(function (require){
   },
   actual = {
     currentPage: null,
-    model: require('time')
+    timeModel: require('time') // require time model
   };
 
 
@@ -19,7 +19,7 @@ define(function (require){
     // main calculate method
     controller: {
       saveSettings: function () {
-        actual.model.set({
+       actual.timeModel.set({
           baseTime: elements.$baseTime.val(),
           discount: elements.$discount.val()
         }, {
@@ -27,7 +27,9 @@ define(function (require){
         })
       },
 
-      calculate: function () {
+      calculate: function (event) {
+        event && event.preventDefault();
+
         // save user settings
         _private.controller.saveSettings();
 
@@ -120,13 +122,15 @@ define(function (require){
         elements.$nextButton = $('#next-button');
         elements.$baseTime = $('#base-time');
         elements.$discount = $('#discount');
+        elements.$settingsForm = $('#settings-form');
 
         // trigguer elements
         elements.$nextButton.on('click', _private.controller.calculate);
+        elements.$settingsForm.on('submit', _private.controller.calculate);
         
         // settings values
-        elements.$baseTime.val(actual.model.get('baseTime'));
-        elements.$discount.val(actual.model.get('discount'));
+        elements.$baseTime.val(actual.timeModel.get('baseTime'));
+        elements.$discount.attr('placeholder', actual.timeModel.get('discount'));
       },
 
       index: function () {
@@ -189,7 +193,7 @@ define(function (require){
   // app methods
   app = {
     init: function () {
-      actual.model = new actual.model();
+      actual.timeModel = new actual.timeModel();
       app.setDom();
       app.bind();
     },

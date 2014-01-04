@@ -17,11 +17,15 @@ define(function (){
 
     validate: function (attrs, options) {
       if (_.isNull(attrs.baseTime.match(/^([0-9][0-9]+:+[0-9][0-9])$/))) {
-        return 'Basetime should be in time format';
+        return 'Basetime should be in time format.';
+      }
+     
+      if (_.isEmpty(attrs.discount)) {
+        return 'Discount cant be empty.';
       }
 
       if (!_.isNumber(parseInt(attrs.discount))) {
-        return 'Basetime should be in time format';
+        return 'Discount should be a number.';
       }
     }
   });
