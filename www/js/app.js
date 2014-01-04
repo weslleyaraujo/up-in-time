@@ -20,15 +20,6 @@ define(function (require){
     
     // main calculate method
     controller: {
-      saveSettings: function () {
-       actual.models.timeModel.set({
-          baseTime: elements.$baseTime.val(),
-          discount: elements.$discount.val()
-        }, {
-          validate: true
-        })
-      },
-
       calculate: function (event) {
         event && event.preventDefault();
 
@@ -110,42 +101,11 @@ define(function (require){
 
     // views methods
     views: {
-      settings: function () {
-        _private.changeView(new upintime.Views.settings());
-        _private.slideIn();
-
-        // get settings elements
-        elements.$nextButton = $('#next-button');
-        elements.$baseTime = $('#base-time');
-        elements.$discount = $('#discount');
-        elements.$settingsForm = $('#settings-form');
-
-        // trigguer elements
-        elements.$nextButton.on('click', _private.controller.calculate);
-        elements.$settingsForm.on('submit', _private.controller.calculate);
-        
-        // settings values
-        elements.$baseTime.val(actual.models.timeModel.get('baseTime'));
-        elements.$discount.attr('placeholder', actual.models.timeModel.get('discount'));
-      },
-
       index: function () {
         // is the user has now config yet and not set the time of the day
         if (!_private.issetTime()) {
-          console.log('the index page');
-
           _private.changeView(new upintime.Views.index());
           _private.slideIn();
-
-          // get index elements
-          elements.$startButton = $('#start-button');
-
-          // bind elements
-          elements.$startButton.on('click', function () {
-            Backbone.history.navigate('settings', {
-              trigger: true 
-            });
-          });
         }
         // if the user has already set the time of the day
         else if (_private.issetTime()) {
@@ -156,6 +116,14 @@ define(function (require){
           // calculate and send to choose time 
           console.log('the choose time page');
         }
+      },
+
+      settings: function () {
+        _private.changeView(new upintime.Views.settings({
+          model: actual.models.timeModel
+        }));
+
+        _private.slideIn();
       },
 
       choose: function () {

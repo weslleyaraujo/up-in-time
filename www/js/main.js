@@ -8,6 +8,9 @@ require.config({
     underscore: 'underscore/underscore',
     fastclick: 'fastclick/lib/fastclick',
     text: 'requirejs-text/text',
+
+    // helpers
+    helpers: '../js/helpers',
     
     // models
     time: '../js/upintime/models/time',

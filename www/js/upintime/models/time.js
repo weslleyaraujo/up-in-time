@@ -8,6 +8,7 @@ define(function (){
       window.localStorage.baseTime = this.get('baseTime');
       window.localStorage.discount = this.get('discount');
       window.localStorage.settings = true;
+      console.log('save ai');
     },
 
     defaults: {
