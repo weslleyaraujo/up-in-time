@@ -1,6 +1,5 @@
-define(['helpers'], function () {
+define(function (require) {
   return Backbone.Collection.extend({
-
     calculate: function () {
       this.each(function (model) {
         var period;
@@ -25,7 +24,6 @@ define(['helpers'], function () {
         // set result
         model.set('result', Timers.timeAsString(result));
 
-        console.log(model.toJSON(), Timers);
       }, this);
     }
   });

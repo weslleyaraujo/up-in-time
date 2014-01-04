@@ -4,13 +4,17 @@ define(['helpers'], function () {
       this.now();
       this.on('change', this.setLocal, this);
       this.on('sync', this.setLocal, this);
+      this.on('invalid', this.onError, this);
       this.trigger('sync');
     },
     
     setLocal: function () {
+      
       window.localStorage.baseTime = this.get('baseTime');
       window.localStorage.discount = this.get('discount');
+      window.localStorage.arrived = this.get('arrived');
       this.setBaseTime();
+      this.now();
     },
 
     defaults: {
@@ -23,25 +27,27 @@ define(['helpers'], function () {
         return 'Basetime should be in time format.';
       }
      
-      if (_.isEmpty(attrs.discount)) {
-        return 'Discount cant be empty.';
-      }
-
       if (!_.isNumber(parseInt(attrs.discount))) {
         return 'Discount should be a number.';
+      }
+      
+      if (_.isEmpty(attrs.discount)) {
+        return 'Discount cant be empty';
       }
     },
   
     now: function () {
-      var date = this.get('arrive');
-
-      if (_.isUndefined(date)) {
+      var date;
+      if (window.localStorage.arrived) {
+        date = window.localStorage.arrived;
+      }
+      else {
         date = new Date();
         date = Timers.timeAsString(date);
       }
 
       this.set('arrived', date);
-      arrived: window.localStorage.arrived || date;
+      window.localStorage.arrived = date;
     },
 
     // set base time date
@@ -51,6 +57,12 @@ define(['helpers'], function () {
         minutes = parseInt(time[1], 10);
 
       this.set('_baseTime', ((hours * 60 + minutes) * 60 * 1000));
+    },
+
+    onError: function (model, errors) {
+      this.set('discount', this.defaults.discount);
+      this.set('baseTime', this.defaults.baseTime);
+      this.now();
     }
 
   });

@@ -6,17 +6,17 @@
 <form id="settings-form">
   <div class="field">
     <label class="field-label"> entry time </label>
-    <input class="field-input" type="time" id="arrived-time" value="<%= arrived %>" name="arrived" />
+    <input class="field-input" type="time" id="arrived-time" value="<%= arrived %>" name="arrived" required />
   </div>
   
   <div class="field">
     <label class="field-label"> base time </label>
-    <input class="field-input" type="time" id="base-time" value="<%= baseTime %>" name="baseTime" />
+    <input class="field-input" type="time" id="base-time" value="<%= baseTime %>" name="baseTime" required />
   </div>
 
   <div class="field">
     <label class="field-label"> minutes for discount </label>
-    <input class="field-input" type="number" id="discount" placeholder="<%= discount %>" name="discount" />
+    <input class="field-input" type="number" id="discount" value="<%= discount %>" name="discount" required />
   </div>
 
   <input type="submit" class="btn" id="next-button" value="Next">

@@ -12,24 +12,17 @@ define(['text!../views/settings.html', 'helpers'], function (html) {
     },
 
     events: {
-     'click #next-button': 'saveSettings',
-     'submit #settings-form': 'saveSettings',
+     'click #next-button': 'saveSettings'
     },
 
-    saveSettings: function (event) {
-      event && event.preventDefault();
+    saveSettings: function () {
       var newValuews = this.$el.find('#settings-form').serializeObject();
-
       this.model.set({
         baseTime: newValuews.baseTime,
         discount: newValuews.discount,
         arrived: newValuews.arrived
       }, {
         validate: true
-      });
-      
-      Backbone.history.navigate('choose', {
-        trigger: true
       });
     }
 

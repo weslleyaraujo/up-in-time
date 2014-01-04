@@ -100,18 +100,30 @@ define(function (require){
       },
 
       settings: function () {
-        _private.changeView(new upintime.Views.settings({
+        var settings = new upintime.Views.settings({
           model: actual.models.timeModel
-        }));
+        });
 
+        _private.changeView(settings);
         _private.slideIn();
+        
+        // get model when it updates
+        elements.$settingsForm = $('#settings-form');
+        elements.$settingsForm.on('submit', function (event) {
+          event && event.preventDefault();
+          actual.models.timeModel = settings.model; 
+      
+          Backbone.history.navigate('choose', {
+            trigger: true
+          });
+        });
       },
 
       choose: function () {
         // reset result collections
         actual.collections.results.reset();
-        
-        // add three times
+      
+        // add three items
         actual.collections.results.add({
           type: 'minimum',
           discount: actual.models.timeModel.get('discount'),
@@ -136,7 +148,10 @@ define(function (require){
         // calculate new times
         actual.collections.results.calculate();
 
-        _private.changeView(new upintime.Views.choose());
+        _private.changeView(new upintime.Views.choose({
+          collection: actual.collections.results
+        }));
+
         _private.slideIn();
       },
 

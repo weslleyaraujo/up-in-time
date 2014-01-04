@@ -21,6 +21,10 @@ require.config({
     settings: '../js/upintime/views/settings',
     choose: '../js/upintime/views/choose',
     done: '../js/upintime/views/done',
+
+    // partials views
+    timeResult: '../js/upintime/views/partials/time-result',
+    timeResults: '../js/upintime/views/partials/time-results',
   
     // collections
     results: '../js/upintime/collections/results',
