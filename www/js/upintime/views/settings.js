@@ -22,7 +22,8 @@ define(['text!../views/settings.html', 'helpers'], function (html) {
 
       this.model.set({
         baseTime: newValuews.baseTime,
-        discount: newValuews.discount
+        discount: newValuews.discount,
+        arrived: newValuews.arrived
       }, {
         validate: true
       });

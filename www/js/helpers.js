@@ -15,3 +15,15 @@ $.fn.serializeObject = function()
   });
   return o;
 };
+
+// timer helpers
+var Timers = {
+  timeAsString: function(time) {
+    return Timers.twoDigits(time.getHours()) + ":" + Timers.twoDigits(time.getMinutes());
+  },
+
+  twoDigits: function(string) {
+    var time = ("00" + string).split("");
+    return time[time.length - 2] + time[time.length - 1];
+  }
+}

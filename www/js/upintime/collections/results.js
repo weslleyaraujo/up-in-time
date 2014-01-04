@@ -1,7 +1,5 @@
-define(function (require) {
+define(['helpers'], function () {
   return Backbone.Collection.extend({
-    initialize: function () {
-    },
 
     calculate: function () {
       this.each(function (model) {
@@ -18,14 +16,17 @@ define(function (require) {
           break;
         }
 
-        var time = '09:00'.split(/[^0-9]/),
+        var time = model.get('arrived').split(/[^0-9]/),
           hours = time[0],
           minutes = time[1],
           dateTime = new Date(2014, 01, 01, hours, minutes),
           result = new Date(dateTime.getTime() + period);
         
-        console.log(result);
-      });
+        // set result
+        model.set('result', Timers.timeAsString(result));
+
+        console.log(model.toJSON(), Timers);
+      }, this);
     }
   });
 });

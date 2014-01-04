@@ -1,6 +1,7 @@
-define(function (){
+define(['helpers'], function () {
   return Backbone.Model.extend({
     initialize: function () {
+      this.now();
       this.on('change', this.setLocal, this);
       this.on('sync', this.setLocal, this);
       this.trigger('sync');
@@ -29,6 +30,18 @@ define(function (){
       if (!_.isNumber(parseInt(attrs.discount))) {
         return 'Discount should be a number.';
       }
+    },
+  
+    now: function () {
+      var date = this.get('arrive');
+
+      if (_.isUndefined(date)) {
+        date = new Date();
+        date = Timers.timeAsString(date);
+      }
+
+      this.set('arrived', date);
+      arrived: window.localStorage.arrived || date;
     },
 
     // set base time date

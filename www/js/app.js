@@ -39,12 +39,6 @@ define(function (require){
     showActualView: function () {
       actual.$view.addClass('is-visible');
     },
-
-    setArrived: function () {
-      var date = new Date();
-      date = date.getHours() + ':' + date.getMinutes();
-      actual.models.timeModel.set('arrived', date);
-    },
     
     // the user has allreay calculated the time?
     issetTime: function () {
@@ -117,9 +111,6 @@ define(function (require){
         // reset result collections
         actual.collections.results.reset();
         
-        // set arrived time
-        _private.setArrived();
-
         // add three times
         actual.collections.results.add({
           type: 'minimum',
