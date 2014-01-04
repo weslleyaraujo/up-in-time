@@ -8,11 +8,41 @@ define(function (require){
     $main: null
   },
   actual = {
-    currentPage: null
+    currentPage: null,
+    model: require('time')
   };
+
 
   // _private methods 
   _private = {
+    
+    // main calculate method
+    controller: {
+      saveSettings: function () {
+        actual.model.set({
+          baseTime: elements.$baseTime.val(),
+          discount: elements.$discount.val()
+        }, {
+          validate: true
+        })
+      },
+
+      calculate: function () {
+        // save user settings
+        _private.controller.saveSettings();
+
+        if(false) {
+          alert('Something wrong with validation'); 
+          return;
+        }
+
+        // send to choose page 
+        Backbone.history.navigate('choose', {
+          trigger: true
+        });
+      }
+    },
+
     router: function () {
       actual.router = new upintime.Router();
       _private.bindRoutes();
@@ -28,19 +58,6 @@ define(function (require){
 
     showActualView: function () {
       actual.$view.addClass('is-visible');
-    },
-
-    // main calculate method
-    calculate: function () {
-      if(false) {
-        alert('Something wrong with validation'); 
-        return;
-      }
-
-      // send to choose page 
-      Backbone.history.navigate('choose', {
-        trigger: true
-      });
     },
     
     // the user has allreay calculated the time?
@@ -101,9 +118,15 @@ define(function (require){
 
         // get settings elements
         elements.$nextButton = $('#next-button');
+        elements.$baseTime = $('#base-time');
+        elements.$discount = $('#discount');
 
         // trigguer elements
-        elements.$nextButton.on('click', _private.calculate);
+        elements.$nextButton.on('click', _private.controller.calculate);
+        
+        // settings values
+        elements.$baseTime.val(actual.model.get('baseTime'));
+        elements.$discount.val(actual.model.get('discount'));
       },
 
       index: function () {
@@ -166,6 +189,7 @@ define(function (require){
   // app methods
   app = {
     init: function () {
+      actual.model = new actual.model();
       app.setDom();
       app.bind();
     },

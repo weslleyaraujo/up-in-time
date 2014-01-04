@@ -14,6 +14,9 @@ require.config({
     settings: '../js/upintime/views/settings',
     choose: '../js/upintime/views/choose',
     done: '../js/upintime/views/done',
+  
+    // models
+    time: '../js/upintime/models/time',
     
     // app
     upintime: '../js/upintime/upintime',

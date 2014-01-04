@@ -10,7 +10,18 @@ define(function (require){
       Extensions: {},
       Helpers: {
         // extend underscore events
-        events: _.extend({}, Backbone.Events)
+        events: _.extend({}, Backbone.Events),
+        
+        // return time with two digits
+        twoDigits: function (string) {
+          var collection = ("00" + string).split("");
+          return collection[collection.length - 2] + collection[collection.length - 1];
+        },
+
+        // return time time as string
+        timeAsString: function(time) {
+          return this.twoDigits(time.getHours()) + ":" + this.twoDigits(time.getMinutes());
+        }
       }
     };
 
