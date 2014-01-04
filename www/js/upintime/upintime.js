@@ -4,9 +4,16 @@ define(function (require){
     _ = require('underscore'),
     Backbone = require('backbone'),
     upintime = {
-      Views: {},
+      Views: {
+        settings: require('settings'),
+        index: require('index'),
+        choose: require('choose'),
+        done: require('done')
+      },
       Collections: {},
-      Models: {},
+      Models: {
+        time: require('time')      
+      },
       Extensions: {},
       Helpers: {
         // extend underscore events

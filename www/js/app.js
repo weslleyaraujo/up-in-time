@@ -9,7 +9,9 @@ define(function (require){
   },
   actual = {
     currentPage: null,
-    timeModel: require('time') // require time model
+    models: {
+      timeModel: new upintime.Models.time()
+    }
   };
 
 
@@ -19,7 +21,7 @@ define(function (require){
     // main calculate method
     controller: {
       saveSettings: function () {
-       actual.timeModel.set({
+       actual.models.timeModel.set({
           baseTime: elements.$baseTime.val(),
           discount: elements.$discount.val()
         }, {
@@ -32,11 +34,6 @@ define(function (require){
 
         // save user settings
         _private.controller.saveSettings();
-
-        if(false) {
-          alert('Something wrong with validation'); 
-          return;
-        }
 
         // send to choose page 
         Backbone.history.navigate('choose', {
@@ -114,8 +111,7 @@ define(function (require){
     // views methods
     views: {
       settings: function () {
-        var settings = require('settings');
-        _private.changeView(new settings());
+        _private.changeView(new upintime.Views.settings());
         _private.slideIn();
 
         // get settings elements
@@ -129,8 +125,8 @@ define(function (require){
         elements.$settingsForm.on('submit', _private.controller.calculate);
         
         // settings values
-        elements.$baseTime.val(actual.timeModel.get('baseTime'));
-        elements.$discount.attr('placeholder', actual.timeModel.get('discount'));
+        elements.$baseTime.val(actual.models.timeModel.get('baseTime'));
+        elements.$discount.attr('placeholder', actual.models.timeModel.get('discount'));
       },
 
       index: function () {
@@ -138,8 +134,7 @@ define(function (require){
         if (!_private.issetTime()) {
           console.log('the index page');
 
-          var index = require('index');
-          _private.changeView(new index());
+          _private.changeView(new upintime.Views.index());
           _private.slideIn();
 
           // get index elements
@@ -164,8 +159,7 @@ define(function (require){
       },
 
       choose: function () {
-        var choose = require('choose');
-        _private.changeView(new choose());
+        _private.changeView(new upintime.Views.choose());
         _private.slideIn();
 
         // get settings elements
@@ -181,8 +175,7 @@ define(function (require){
       },
 
       done: function () {
-        var done = require('done');
-        _private.changeView(new done());
+        _private.changeView(new upintime.Views.done());
         _private.slideIn();
       }
 
@@ -193,7 +186,6 @@ define(function (require){
   // app methods
   app = {
     init: function () {
-      actual.timeModel = new actual.timeModel();
       app.setDom();
       app.bind();
     },

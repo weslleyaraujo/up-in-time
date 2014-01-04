@@ -9,15 +9,19 @@ require.config({
     fastclick: 'fastclick/lib/fastclick',
     text: 'requirejs-text/text',
     
+    // models
+    time: '../js/upintime/models/time',
+    result: '../js/upintime/models/result',
+
     // views
     index: '../js/upintime/views/index',
     settings: '../js/upintime/views/settings',
     choose: '../js/upintime/views/choose',
     done: '../js/upintime/views/done',
   
-    // models
-    time: '../js/upintime/models/time',
-    
+    // collections
+    results: '../js/upintime/collections/results',
+
     // app
     upintime: '../js/upintime/upintime',
     app: '../js/app'
