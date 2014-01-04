@@ -10,9 +10,12 @@ define(function (require){
         choose: require('choose'),
         done: require('done')
       },
-      Collections: {},
+      Collections: {
+        results: require('results')
+      },
       Models: {
-        time: require('time')      
+        time: require('time'),
+        result: require('result'),
       },
       Extensions: {},
       Helpers: {

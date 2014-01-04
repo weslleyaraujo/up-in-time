@@ -11,6 +11,11 @@ define(function (require){
     currentPage: null,
     models: {
       timeModel: new upintime.Models.time()
+    },
+    collections: {
+      results: new upintime.Collections.results({
+        model: upintime.Models.result
+      })
     }
   };
 
@@ -19,11 +24,12 @@ define(function (require){
   _private = {
     router: function () {
       actual.router = new upintime.Router();
-      _private.bindRoutes();
+      _private.bind();
       Backbone.history.start();
     },
 
-    bindRoutes: function () {
+    bind: function () {
+      // bind routes
       upintime.Helpers.events.on('index', _private.views.index);
       upintime.Helpers.events.on('settings', _private.views.settings);
       upintime.Helpers.events.on('choose', _private.views.choose);
@@ -32,6 +38,12 @@ define(function (require){
 
     showActualView: function () {
       actual.$view.addClass('is-visible');
+    },
+
+    setArrived: function () {
+      var date = new Date();
+      date = date.getHours() + ':' + date.getMinutes();
+      actual.models.timeModel.set('arrived', date);
     },
     
     // the user has allreay calculated the time?
@@ -102,6 +114,37 @@ define(function (require){
       },
 
       choose: function () {
+        // reset result collections
+        actual.collections.results.reset();
+        
+        // set arrived time
+        _private.setArrived();
+
+        // add three times
+        actual.collections.results.add({
+          type: 'minimum',
+          discount: actual.models.timeModel.get('discount'),
+          baseTime: actual.models.timeModel.get('_baseTime'),
+          arrived: actual.models.timeModel.get('arrived')
+        });
+
+        actual.collections.results.add({
+          type: 'normal',
+          discount: actual.models.timeModel.get('discount'),
+          baseTime: actual.models.timeModel.get('_baseTime'),
+          arrived: actual.models.timeModel.get('arrived')
+        });
+
+        actual.collections.results.add({
+          type: 'maximum',
+          discount: actual.models.timeModel.get('discount'),
+          baseTime: actual.models.timeModel.get('_baseTime'),
+          arrived: actual.models.timeModel.get('arrived')
+        });
+
+        // calculate new times
+        actual.collections.results.calculate();
+
         _private.changeView(new upintime.Views.choose());
         _private.slideIn();
       },
@@ -144,11 +187,6 @@ define(function (require){
       this.$el.append( next.$el );
       next.transitionIn();
       this.currentPage = next;
-    },
-
-    startHanler: function () {
-      if (!_private.issetConfig()) {
-      }
     }
   }
 
