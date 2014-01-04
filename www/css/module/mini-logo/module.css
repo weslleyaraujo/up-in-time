@@ -12,3 +12,8 @@
   margin: 5px auto;
   font-size: 40px;
 }
+
+/* line 16, ../../../sass/module/mini-logo/module.sass */
+.mini-logo-image {
+  width: 70px;
+}
