@@ -35,8 +35,17 @@ define(function (require){
     },
 
     onTimeChange: function (event) {
+      var $this = $(event.target);
+      this.collection.invoke('set', {
+        'isSelected': false
+      });
+      
+      // set model as selected
+      this.collection.get($this.val()).set('isSelected', true);
+      
+      // remove checked class and add to unique
       this.$el.find('.time-result').removeClass('is-checked');
-      $(event.target).closest('.time-result').addClass('is-checked');
+      $this.closest('.time-result').addClass('is-checked');
     }
   });
 });

@@ -14,14 +14,20 @@ define(function (require){
       var html = require('text!../views/partials/result-item.html'),
         template = _.template(html);
       this.$el.html(template(this.model.toJSON()));
+      this.setCidValue();
     },
 
     setAttrs: function () {
       this.$el.attr('for', this.model.get('type')); 
+      this.$el.attr('data-item-cid', this.model.cid); 
     },
 
     setClass: function () {
       this.$el.addClass(this.model.get('type'));
+    },
+
+    setCidValue: function () {
+      this.$el.find('.time-result-radio').val(this.model.cid); 
     }
     
   });

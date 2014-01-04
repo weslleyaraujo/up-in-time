@@ -9,7 +9,6 @@ define(['helpers'], function () {
     },
     
     setLocal: function () {
-      
       window.localStorage.baseTime = this.get('baseTime');
       window.localStorage.discount = this.get('discount');
       window.localStorage.arrived = this.get('arrived');
@@ -19,7 +18,8 @@ define(['helpers'], function () {
 
     defaults: {
       baseTime: window.localStorage.baseTime || '09:48',
-      discount: window.localStorage.discount || 15
+      discount: window.localStorage.discount || 15,
+      isSelected: false
     },
 
     validate: function (attrs, options) {
