@@ -1,0 +1,25 @@
+/* ==========================================================================
+ * Module: main-time
+ * ==========================================================================
+
+// import config 
+@import 'config.sass'
+
+$module-name: 'main-time'
+$default-clock-font-size: 120px
+$default-description-font-size: 20px
+$default-clock-shadow-color: shade($main-bg-color, 20%)
+
+.#{$module-name}
+  text-align: center
+
+.#{$module-name}-clock
+  margin: 0 auto 0.1% auto
+  font-size: $default-clock-font-size
+  height: 140px
+  font-family: 'dolce_vita_lightsuper_light'
+  +text-shadow(1px 1px 1px $default-clock-shadow-color)
+
+.#{$module-name}-description
+  font-size: $default-description-font-size
+  margin: 0

@@ -13,6 +13,7 @@ require.config({
     index: '../js/upintime/views/index',
     settings: '../js/upintime/views/settings',
     choose: '../js/upintime/views/choose',
+    done: '../js/upintime/views/done',
     
     // app
     upintime: '../js/upintime/upintime',

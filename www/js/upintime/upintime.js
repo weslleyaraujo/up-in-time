@@ -20,6 +20,7 @@ define(function (require){
       '': 'index',
       'settings': 'settings',
       'choose': 'choose',
+      'done': 'done'
     },
 
     index: function () {
@@ -32,6 +33,10 @@ define(function (require){
 
     choose: function () {
        upintime.Helpers.events.trigger('choose');
+    },
+
+    done: function () {
+       upintime.Helpers.events.trigger('done');
     }
 
   });

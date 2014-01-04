@@ -11,9 +11,10 @@
 .mini-logo-description {
   margin: 5px auto;
   font-size: 40px;
+  font-family: "dolce_vita_lightsuper_light";
 }
 
-/* line 16, ../../../sass/module/mini-logo/module.sass */
+/* line 17, ../../../sass/module/mini-logo/module.sass */
 .mini-logo-image {
   width: 70px;
 }

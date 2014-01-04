@@ -23,6 +23,7 @@ define(function (require){
       upintime.Helpers.events.on('index', _private.views.index);
       upintime.Helpers.events.on('settings', _private.views.settings);
       upintime.Helpers.events.on('choose', _private.views.choose);
+      upintime.Helpers.events.on('done', _private.views.done);
     },
 
     showActualView: function () {
@@ -36,6 +37,7 @@ define(function (require){
         return;
       }
 
+      // send to choose page 
       Backbone.history.navigate('choose', {
         trigger: true
       });
@@ -79,6 +81,15 @@ define(function (require){
           actual.$oldView.remove(); 
         }
       }, 30);
+    },
+
+    setNotification: function () {
+      // set notification logic
+      
+      // send to done page 
+      Backbone.history.navigate('done', {
+        trigger: true
+      });
     },
 
     // views methods
@@ -128,6 +139,18 @@ define(function (require){
       choose: function () {
         var choose = require('choose');
         _private.changeView(new choose());
+        _private.slideIn();
+
+        // get settings elements
+        elements.$nextButton = $('#next-button');
+
+        // trigguer elements
+        elements.$nextButton.on('click', _private.setNotification);
+      },
+
+      done: function () {
+        var done = require('done');
+        _private.changeView(new done());
         _private.slideIn();
       }
 
