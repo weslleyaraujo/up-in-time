@@ -44,12 +44,6 @@ define(function (require){
     // the user has allreay calculated the time?
     issetTime: function () {
       if(window.localStorage.done) {
-        var today = new Date().toJSON().slice(0,10);
-        actual.retrieved = JSON.parse(window.localStorage.done);
-        // verify dates
-        if (today == actual.retrieved.today) {
-          return true;
-        }
       }
 
       return false;
@@ -63,6 +57,14 @@ define(function (require){
 
       return true;
 
+    },
+
+    arrivedDate: function (arrived) {
+      var date = new Date();
+      arrived = arrived.split(':');
+      date.setHours(arrived[0]);
+      date.setMinutes(arrived[1]);
+      return date;
     },
    
     // change view settings
@@ -122,6 +124,8 @@ define(function (require){
           model: actual.models.timeModel
         });
 
+        console.log(actual.models.timeModel);
+
         _private.changeView(settings);
         _private.slideIn();
         
@@ -147,6 +151,7 @@ define(function (require){
           discount: actual.models.timeModel.get('discount'),
           baseTime: actual.models.timeModel.get('_baseTime'),
           arrived: actual.models.timeModel.get('arrived'),
+          arrivedDate: _private.arrivedDate(actual.models.timeModel.get('arrived')),
           isSelected: true
         });
 
@@ -154,14 +159,16 @@ define(function (require){
           type: 'normal',
           discount: actual.models.timeModel.get('discount'),
           baseTime: actual.models.timeModel.get('_baseTime'),
-          arrived: actual.models.timeModel.get('arrived')
+          arrived: actual.models.timeModel.get('arrived'),
+          arrivedDate: _private.arrivedDate(actual.models.timeModel.get('arrived'))
         });
 
         actual.collections.results.add({
           type: 'maximum',
           discount: actual.models.timeModel.get('discount'),
           baseTime: actual.models.timeModel.get('_baseTime'),
-          arrived: actual.models.timeModel.get('arrived')
+          arrived: actual.models.timeModel.get('arrived'),
+          arrivedDate: _private.arrivedDate(actual.models.timeModel.get('arrived'))
         });
 
         // calculate new times
@@ -179,10 +186,18 @@ define(function (require){
           isSelected: true 
         });
 
+        if (selected.get('isCreated')) {
+          window.localStorage.done = JSON.stringify(this.toJSON()); 
+        }
+        
         actual.models.done.set({
           arrived: selected.attributes.arrived,
+          arrivedDate: selected.attributes.arrivedDate,
           baseTime: selected.attributes.baseTime,
+          baseTimeHours: actual.models.timeModel.attributes.baseTime,
           result: selected.attributes.result,
+          type: selected.attributes.type,
+          discount: selected.attributes.discount,
           isCreated: true
         });
 

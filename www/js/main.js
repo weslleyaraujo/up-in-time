@@ -7,7 +7,7 @@ require.config({
     backbone: 'backbone/backbone',
     underscore: 'underscore/underscore',
     fastclick: 'fastclick/lib/fastclick',
-    text: 'requirejs-text/text',
+    text: 'requirejs-text/text'
 
     // helpers
     helpers: '../js/helpers',

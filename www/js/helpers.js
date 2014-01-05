@@ -1,3 +1,19 @@
+// add methods addHours and addMinutes do Date
+Date.prototype.addHours= function(h){
+  this.setHours(this.getHours()+h);
+  return this;
+}
+Date.prototype.addMinutes= function(h){
+  this.setMinutes(this.getMinutes()+h);
+  return this;
+}
+
+
+// Add padding methos to number
+Number.prototype.padding = function (str, len, char) {
+  return (Array(len).join(char)+str).substr(-len);
+}
+
 // create serialize object method for jquery
 $.fn.serializeObject = function()
 {
