@@ -16,12 +16,6 @@ Date.prototype.removeMinutes= function(h){
   return this;
 }
 
-
-// Add padding methos to number
-Number.prototype.padding = function (str, len, char) {
-  return (Array(len).join(char)+str).substr(-len);
-}
-
 // create serialize object method for jquery
 $.fn.serializeObject = function()
 {

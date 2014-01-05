@@ -238,7 +238,17 @@ define(function (require){
             // get worked minutes
             workedMinutes = nowMinutes - arrivedMinutes;
             period.removeMinutes(workedMinutes);
-            console.log('arrivedMinutes', arrivedMinutes, 'nowMinutes', nowMinutes, workedMinutes, period);
+
+            // retrive values
+            var hours = app.paddingNumber(parseInt(period.getHours()), 2, 0),
+                minutes = app.paddingNumber(parseInt(period.getMinutes()), 2, 0);
+
+            // setting remainder time to model
+            actual.models.done.set({
+              remainder: hours + ':' + minutes,
+              remainderHours: hours,
+              remainderMinutes: minutes
+            });
           }
           else {
             console.log('hora de ir embora'); 
@@ -285,6 +295,10 @@ define(function (require){
       this.$el.append( next.$el );
       next.transitionIn();
       this.currentPage = next;
+    },
+
+    paddingNumber: function (str, len, char) {
+      return (Array(len).join(char)+str).substr(-len);
     }
   }
 

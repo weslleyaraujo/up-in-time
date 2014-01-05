@@ -13,8 +13,13 @@ define(['text!../views/done.html', 'helpers'], function (html, helpers){
     },
 
     render: function () {
+      // render view
       var template = _.template(html);
       this.$el.html(template(this.model.toJSON()));
+
+      // clear and start interval again
+      this.interval = clearInterval(this.interval);
+      this.blinkClock();
     },
 
     blinkClock: function () {

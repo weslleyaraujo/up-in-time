@@ -2,6 +2,9 @@ define(['helpers'], function (helpers){
   return Backbone.Model.extend({
     defaults: {
       isCreated: false,
+      remainderHours: '--',
+      remainderMinutes: '--',
+      remainder: '00:00'
     },
 
     initialize: function () {
