@@ -241,13 +241,18 @@ define(function (require){
 
             // retrive values
             var hours = app.paddingNumber(parseInt(period.getHours()), 2, 0),
-                minutes = app.paddingNumber(parseInt(period.getMinutes()), 2, 0);
+                minutes = app.paddingNumber(parseInt(period.getMinutes()), 2, 0),
+
+            // get total period minutes
+            periodMinutes = period.getHours() * 60 + period.getMinutes(),
+            percent = workedMinutes * 100 / periodMinutes;
 
             // setting remainder time to model
             actual.models.done.set({
               remainder: hours + ':' + minutes,
               remainderHours: hours,
-              remainderMinutes: minutes
+              remainderMinutes: minutes,
+              percent: parseInt(percent)
             });
           }
           else {

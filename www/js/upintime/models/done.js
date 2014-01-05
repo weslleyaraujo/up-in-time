@@ -4,7 +4,8 @@ define(['helpers'], function (helpers){
       isCreated: false,
       remainderHours: '--',
       remainderMinutes: '--',
-      remainder: '00:00'
+      remainder: '00:00',
+      percent: 0
     },
 
     initialize: function () {
