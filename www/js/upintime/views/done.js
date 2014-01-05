@@ -5,6 +5,12 @@ define(['text!../views/done.html'], function (html){
     initialize: function () {
       this.render();
       this.blinkClock();
+      this.model.startInterval();
+      this.bind();
+    },
+
+    bind: function () {
+      this.model.on('change', this.render, this);
     },
 
     render: function () {
@@ -18,7 +24,7 @@ define(['text!../views/done.html'], function (html){
         blink.addClass('is-invisible');
         setTimeout(function () {
           blink.removeClass('is-invisible');
-        }, 500);
+        }, 600);
       }, 1000);
     }
   });

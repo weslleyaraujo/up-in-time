@@ -172,6 +172,7 @@ define(function (require){
         _private.changeView(new upintime.Views.done({
           model: actual.models.done
         }));
+
         _private.slideIn();
       }
 
