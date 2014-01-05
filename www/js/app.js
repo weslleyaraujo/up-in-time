@@ -43,8 +43,13 @@ define(function (require){
     
     // the user has allreay calculated the time?
     issetTime: function () {
-      if(false) {
-        return true;
+      if(window.localStorage.done) {
+        var today = new Date().toJSON().slice(0,10);
+        actual.retrieved = JSON.parse(window.localStorage.done);
+        // verify dates
+        if (today == actual.retrieved.today) {
+          return true;
+        }
       }
 
       return false;
@@ -92,11 +97,23 @@ define(function (require){
         // if the user has already set the time of the day
         else if (_private.issetTime()) {
           // send to final time 
-          console.log('the final time page');
-        }
-        else {
-          // calculate and send to choose time 
-          console.log('the choose time page');
+          actual.models.done.set({
+            today: actual.retrieved.today,
+            timeNow: actual.retrieved.timeNow,
+            result: actual.retrieved.result,
+            remaining: actual.retrieved.remaining,
+            minutes: actual.retrieved.minutes,
+            isCreated: actual.retrieved.isCreated,
+            hours: actual.retrieved.hours,
+            baseTime: actual.retrieved.baseTime,
+            arrived: actual.retrieved.arrived
+          });
+
+          _private.changeView(new upintime.Views.done({
+            model: actual.models.done
+          }));
+
+          _private.slideIn();
         }
       },
 
