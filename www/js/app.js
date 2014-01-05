@@ -3,6 +3,7 @@ define(function (require){
 
   var app,
   _private,
+  interval,
   upintime = require('upintime'),
   elements = {
     $main: null
@@ -75,27 +76,30 @@ define(function (require){
 
     },
 
-    // set the date object with time to leave
-    dateToLeave: function (arrivedDate, type) {
-      console.log(arrivedDate);
-
-      // get the type of selection
+    getPeriod: function (type) {
       switch (type) {
         case 'minimum' :
-          arrivedDate.addHours(new Date(window.localStorage.minPeriod).getHours());
-          arrivedDate.addMinutes(new Date(window.localStorage.minPeriod).getMinutes());
+          return window.localStorage.minPeriod;
         break;
         case 'normal' :
-          arrivedDate.addHours(new Date(window.localStorage.period).getHours());
-          arrivedDate.addMinutes(new Date(window.localStorage.period).getMinutes());
+          return window.localStorage.period;
         break;
         case 'maximum' :
-          arrivedDate.addHours(new Date(window.localStorage.maxPeriod).getHours());
-          arrivedDate.addMinutes(new Date(window.localStorage.maxPeriod).getMinutes());
+          return window.localStorage.maxPeriod;
         break;
       }
+    },
+
+    // set the date object with time to leave
+    dateToLeave: function (type) {
+      arrivedDate = _private.arrivedDate(actual.models.timeModel.get('arrived'));
+      period = _private.getPeriod(type);
+
+      // set time to period
+      arrivedDate.addHours(new Date(period).getHours());
+      arrivedDate.addMinutes(new Date(period).getMinutes());
       
-      console.log(arrivedDate);
+      return arrivedDate;
     },
     
     // create the arrivedDate
@@ -214,15 +218,32 @@ define(function (require){
         // calculate all periods that is possible to leave
         _private.setPeriods();
         
-        // create the choosed date to leave
-        _private.dateToLeave(selected.get('arrivedDate'), selected.get('type'));
-
         actual.models.done.set({
-          arrivedDate: selected.get('arrivedDate'),
           result: selected.get('result'),
           type: selected.get('type'),
+          arrivedDate: selected.get('arrivedDate'),
+          dateToLeave: _private.dateToLeave(selected.get('type')),
           isCreated: true
         });
+
+        // remainder time
+        interval = setInterval(function(){
+          var now = new Date();
+
+          if (selected.get('arrivedDate') < new Date()) {
+            var arrivedMinutes = selected.get('arrivedDate').getHours() * 60 + selected.get('arrivedDate').getMinutes(),
+            nowMinutes = now.getHours() * 60 + now.getMinutes(),
+            period = new Date(_private.getPeriod(selected.get('type'))),
+
+            // get worked minutes
+            workedMinutes = nowMinutes - arrivedMinutes;
+            period.removeMinutes(workedMinutes);
+            console.log('arrivedMinutes', arrivedMinutes, 'nowMinutes', nowMinutes, workedMinutes, period);
+          }
+          else {
+            console.log('hora de ir embora'); 
+          }
+        }, 1000);
 
         _private.changeView(new upintime.Views.done({
           model: actual.models.done

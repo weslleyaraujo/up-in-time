@@ -25,8 +25,6 @@ define(['text!../views/done.html', 'helpers'], function (html, helpers){
           blink.removeClass('is-invisible');
         }, 600);
       }, 1000);
-    },
-
-
+    }
   });
 });

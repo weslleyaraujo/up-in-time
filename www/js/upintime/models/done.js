@@ -13,8 +13,10 @@ define(['helpers'], function (helpers){
     },
 
     onChange: function () {
-                console.log('model is chaged');
+      console.log('model is chaged');
+      console.log(this.toJSON());
     }
     // QUANTO TEMPO PASSOU DA HORA QUE CHEGUEI ATE AGORA?
+    // QUANTO TEMPO DE AGORA FALTA PRA CHEGAR NO TOLEAVE?
   });
 });
