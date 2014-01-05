@@ -42,10 +42,6 @@ define(function (require){
       
       // set model as selected
       this.collection.get($this.val()).set('isSelected', true);
-      
-      // remove checked class and add to unique
-      this.$el.find('.time-result').removeClass('is-checked');
-      $this.closest('.time-result').addClass('is-checked');
     }
   });
 });

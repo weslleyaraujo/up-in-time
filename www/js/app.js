@@ -10,7 +10,8 @@ define(function (require){
   actual = {
     currentPage: null,
     models: {
-      timeModel: new upintime.Models.time()
+      timeModel: new upintime.Models.time(),
+      done: new upintime.Models.done()
     },
     collections: {
       results: new upintime.Collections.results({
@@ -128,7 +129,8 @@ define(function (require){
           type: 'minimum',
           discount: actual.models.timeModel.get('discount'),
           baseTime: actual.models.timeModel.get('_baseTime'),
-          arrived: actual.models.timeModel.get('arrived')
+          arrived: actual.models.timeModel.get('arrived'),
+          isSelected: true
         });
 
         actual.collections.results.add({
@@ -156,7 +158,20 @@ define(function (require){
       },
 
       done: function () {
-        _private.changeView(new upintime.Views.done());
+        var selected = actual.collections.results.findWhere({
+          isSelected: true 
+        });
+
+        actual.models.done.set({
+          arrived: selected.attributes.arrived,
+          baseTime: selected.attributes.baseTime,
+          result: selected.attributes.result,
+          isCreated: true
+        });
+
+        _private.changeView(new upintime.Views.done({
+          model: actual.models.done
+        }));
         _private.slideIn();
       }
 

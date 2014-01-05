@@ -11,7 +11,6 @@ define(['helpers'], function () {
     setLocal: function () {
       window.localStorage.baseTime = this.get('baseTime');
       window.localStorage.discount = this.get('discount');
-      window.localStorage.arrived = this.get('arrived');
       this.setBaseTime();
       this.now();
     },
@@ -38,8 +37,8 @@ define(['helpers'], function () {
   
     now: function () {
       var date;
-      if (window.localStorage.arrived) {
-        date = window.localStorage.arrived;
+      if (this.get('arrived')) {
+        date = this.get('arrived');
       }
       else {
         date = new Date();
@@ -47,7 +46,6 @@ define(['helpers'], function () {
       }
 
       this.set('arrived', date);
-      window.localStorage.arrived = date;
     },
 
     // set base time date

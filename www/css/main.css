@@ -198,6 +198,11 @@ textarea {
   transition: all 0.25s ease-out;
 }
 
+/* line 22, ../sass/no-modular/helpers.sass */
+.is-invisible {
+  visibility: hidden !important;
+}
+
 /* line 3, ../sass/layout/_header.sass */
 .l-header {
   display: block;

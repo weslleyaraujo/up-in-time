@@ -16,6 +16,7 @@ define(function (require){
       Models: {
         time: require('time'),
         result: require('result'),
+        done: require('doneModel')
       },
       Extensions: {},
       Helpers: {

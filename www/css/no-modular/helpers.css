@@ -44,3 +44,8 @@
   -o-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
 }
+
+/* line 22, ../../sass/no-modular/helpers.sass */
+.is-invisible {
+  visibility: hidden !important;
+}

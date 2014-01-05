@@ -20,7 +20,7 @@ define(function (require) {
           minutes = time[1],
           dateTime = new Date(2014, 01, 01, hours, minutes),
           result = new Date(dateTime.getTime() + period);
-        
+
         // set result
         model.set('result', Timers.timeAsString(result));
 

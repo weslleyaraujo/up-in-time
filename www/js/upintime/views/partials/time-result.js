@@ -8,6 +8,8 @@ define(function (require){
       this.setClass();
       this.setAttrs();
       this.render();
+      this.setSelected();
+      this.bind();
     },
 
     render: function () {
@@ -15,6 +17,10 @@ define(function (require){
         template = _.template(html);
       this.$el.html(template(this.model.toJSON()));
       this.setCidValue();
+    },
+
+    bind: function() {
+      this.model.on('change', this.setSelected, this); 
     },
 
     setAttrs: function () {
@@ -28,6 +34,15 @@ define(function (require){
 
     setCidValue: function () {
       this.$el.find('.time-result-radio').val(this.model.cid); 
+    },
+
+    setSelected: function () {
+      if (this.model.get('isSelected')) {
+        this.$el.addClass('is-checked'); 
+        return;
+      }
+      
+      this.$el.removeClass('is-checked'); 
     }
     
   });

@@ -15,6 +15,7 @@ require.config({
     // models
     time: '../js/upintime/models/time',
     result: '../js/upintime/models/result',
+    doneModel: '../js/upintime/models/done',
 
     // views
     index: '../js/upintime/views/index',
