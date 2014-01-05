@@ -43,8 +43,8 @@ define(function (require){
     
     // the user has allreay calculated the time?
     issetTime: function () {
-      if(window.localStorage.done) {
-      }
+      // if(window.localStorage.done) {
+      // }
 
       return false;
     },
@@ -59,6 +59,46 @@ define(function (require){
 
     },
 
+    // create all periods to work
+    setPeriods: function () {
+      // Minimum
+      var period = new Date('Sun Jan 01 2014 '+ window.localStorage.baseTime);
+      window.localStorage.minPeriod = period.removeMinutes(parseInt(window.localStorage.discount));
+
+      // Normal
+      var period = new Date('Sun Jan 01 2014 '+ window.localStorage.baseTime);
+      window.localStorage.period = period;
+
+      // Maximun
+      var period = new Date('Sun Jan 01 2014 '+ window.localStorage.baseTime);
+      window.localStorage.maxPeriod = period.addMinutes(parseInt(window.localStorage.discount));
+
+    },
+
+    // set the date object with time to leave
+    dateToLeave: function (arrivedDate, type) {
+      console.log(arrivedDate);
+
+      // get the type of selection
+      switch (type) {
+        case 'minimum' :
+          arrivedDate.addHours(new Date(window.localStorage.minPeriod).getHours());
+          arrivedDate.addMinutes(new Date(window.localStorage.minPeriod).getMinutes());
+        break;
+        case 'normal' :
+          arrivedDate.addHours(new Date(window.localStorage.period).getHours());
+          arrivedDate.addMinutes(new Date(window.localStorage.period).getMinutes());
+        break;
+        case 'maximum' :
+          arrivedDate.addHours(new Date(window.localStorage.maxPeriod).getHours());
+          arrivedDate.addMinutes(new Date(window.localStorage.maxPeriod).getMinutes());
+        break;
+      }
+      
+      console.log(arrivedDate);
+    },
+    
+    // create the arrivedDate
     arrivedDate: function (arrived) {
       var date = new Date();
       arrived = arrived.split(':');
@@ -98,24 +138,7 @@ define(function (require){
         }
         // if the user has already set the time of the day
         else if (_private.issetTime()) {
-          // send to final time 
-          actual.models.done.set({
-            today: actual.retrieved.today,
-            timeNow: actual.retrieved.timeNow,
-            result: actual.retrieved.result,
-            remaining: actual.retrieved.remaining,
-            minutes: actual.retrieved.minutes,
-            isCreated: actual.retrieved.isCreated,
-            hours: actual.retrieved.hours,
-            baseTime: actual.retrieved.baseTime,
-            arrived: actual.retrieved.arrived
-          });
-
-          _private.changeView(new upintime.Views.done({
-            model: actual.models.done
-          }));
-
-          _private.slideIn();
+          console.log('final ai');
         }
       },
 
@@ -123,8 +146,6 @@ define(function (require){
         var settings = new upintime.Views.settings({
           model: actual.models.timeModel
         });
-
-        console.log(actual.models.timeModel);
 
         _private.changeView(settings);
         _private.slideIn();
@@ -186,18 +207,20 @@ define(function (require){
           isSelected: true 
         });
 
-        if (selected.get('isCreated')) {
-          window.localStorage.done = JSON.stringify(this.toJSON()); 
-        }
+        // if (selected.get('isCreated')) {
+        //   window.localStorage.done = JSON.stringify(this.toJSON()); 
+        // }
+
+        // calculate all periods that is possible to leave
+        _private.setPeriods();
         
+        // create the choosed date to leave
+        _private.dateToLeave(selected.get('arrivedDate'), selected.get('type'));
+
         actual.models.done.set({
-          arrived: selected.attributes.arrived,
-          arrivedDate: selected.attributes.arrivedDate,
-          baseTime: selected.attributes.baseTime,
-          baseTimeHours: actual.models.timeModel.attributes.baseTime,
-          result: selected.attributes.result,
-          type: selected.attributes.type,
-          discount: selected.attributes.discount,
+          arrivedDate: selected.get('arrivedDate'),
+          result: selected.get('result'),
+          type: selected.get('type'),
           isCreated: true
         });
 

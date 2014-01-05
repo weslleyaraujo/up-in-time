@@ -2,12 +2,10 @@ define(['helpers'], function (helpers){
   return Backbone.Model.extend({
     defaults: {
       isCreated: false,
-      timeNow: ''
     },
 
     initialize: function () {
       this.bind();
-      this.setTimeNow();
     },
 
     bind: function () {
@@ -15,14 +13,8 @@ define(['helpers'], function (helpers){
     },
 
     onChange: function () {
-      // this.setRemaing();
-    },
-    
-    setTimeNow: function () {
-      this.set('timeNow', new Date());
-    },
-
-
-
+                console.log('model is chaged');
+    }
+    // QUANTO TEMPO PASSOU DA HORA QUE CHEGUEI ATE AGORA?
   });
 });

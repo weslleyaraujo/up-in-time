@@ -3,8 +3,16 @@ Date.prototype.addHours= function(h){
   this.setHours(this.getHours()+h);
   return this;
 }
-Date.prototype.addMinutes= function(h){
-  this.setMinutes(this.getMinutes()+h);
+Date.prototype.removeHours= function(h){
+  this.setHours(this.getHours()-h);
+  return this;
+}
+Date.prototype.addMinutes = function (m) {
+  this.setMinutes(this.getMinutes()+m);
+  return this;
+}
+Date.prototype.removeMinutes= function(h){
+  this.setMinutes(this.getMinutes()-h);
   return this;
 }
 
