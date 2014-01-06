@@ -5,7 +5,8 @@ define(['helpers'], function (helpers){
       remainderHours: '--',
       remainderMinutes: '--',
       remainder: '00:00',
-      percent: 0
+      percent: 0,
+      percentInt: 0
     },
 
     initialize: function () {
@@ -19,8 +20,13 @@ define(['helpers'], function (helpers){
     onChange: function () {
       console.log('model is chaged');
       console.log(this.toJSON());
+      this.saveModel();
+    },
+
+    saveModel: function () {
+      if(this.get('isCreated')) {
+        window.localStorage.done = JSON.stringify(this.toJSON());
+      }
     }
-    // QUANTO TEMPO PASSOU DA HORA QUE CHEGUEI ATE AGORA?
-    // QUANTO TEMPO DE AGORA FALTA PRA CHEGAR NO TOLEAVE?
   });
 });

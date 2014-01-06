@@ -44,9 +44,10 @@ define(function (require){
     
     // the user has allreay calculated the time?
     issetTime: function () {
-      // if(window.localStorage.done) {
-      // }
-
+      var retrived = window.localStorage.done;
+      if (retrived) {
+        console.log(retrived);
+      }
       return false;
     },
 
@@ -58,6 +59,10 @@ define(function (require){
 
       return true;
 
+    },
+
+    clearTimer: function () {
+      interval = clearInterval(interval);
     },
 
     // create all periods to work
@@ -210,10 +215,8 @@ define(function (require){
         var selected = actual.collections.results.findWhere({
           isSelected: true 
         });
+        var isDone = false;
 
-        // if (selected.get('isCreated')) {
-        //   window.localStorage.done = JSON.stringify(this.toJSON()); 
-        // }
 
         // calculate all periods that is possible to leave
         _private.setPeriods();
@@ -225,12 +228,14 @@ define(function (require){
           dateToLeave: _private.dateToLeave(selected.get('type')),
           isCreated: true
         });
+        console.log(_private.dateToLeave(selected.get('type')));
+
 
         // remainder time
         interval = setInterval(function(){
           var now = new Date();
 
-          if (selected.get('arrivedDate') < new Date()) {
+          if (new Date(actual.models.done.get('dateToLeave')) >= now && !isDone) {
             var arrivedMinutes = selected.get('arrivedDate').getHours() * 60 + selected.get('arrivedDate').getMinutes(),
             nowMinutes = now.getHours() * 60 + now.getMinutes(),
             period = new Date(_private.getPeriod(selected.get('type'))),
@@ -247,18 +252,25 @@ define(function (require){
             periodMinutes = period.getHours() * 60 + period.getMinutes(),
             percent = workedMinutes * 100 / periodMinutes;
 
+            if (workedMinutes >= periodMinutes || percent === 100) {
+              percent = 100;
+              isDone = true;
+            }
+            
             // setting remainder time to model
             actual.models.done.set({
               remainder: hours + ':' + minutes,
               remainderHours: hours,
               remainderMinutes: minutes,
-              percent: parseInt(percent)
+              percent: percent,
+              percentInt: parseInt(percent)
             });
           }
           else {
-            console.log('hora de ir embora'); 
+            _private.clearTimer();
+            alert('vai pra casa jamelão');
           }
-        }, 1000);
+        }, 100);
 
         _private.changeView(new upintime.Views.done({
           model: actual.models.done
