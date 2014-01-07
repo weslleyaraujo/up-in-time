@@ -40,13 +40,15 @@ define(function (require){
     showActualView: function () {
       actual.$view.addClass('is-visible');
     },
-    
+
     // the user has allreay calculated the time?
     issetTime: function () {
       var retrived = window.localStorage.done;
+
       // set info into model
       if (retrived) {
         retrived = JSON.parse(retrived);
+        console.log(retrived);
         actual.models.done.set({
           arrivedDate: new Date(retrived.arrivedDate),
           dateToLeave: new Date(retrived.dateToLeave),
@@ -120,10 +122,10 @@ define(function (require){
       // set time to period
       arrivedDate.addHours(new Date(period).getHours());
       arrivedDate.addMinutes(new Date(period).getMinutes());
-      
+
       return arrivedDate;
     },
-    
+
     // create the arrivedDate
     arrivedDate: function (arrived) {
       var date = new Date();
@@ -132,7 +134,7 @@ define(function (require){
       date.setMinutes(arrived[1]);
       return date;
     },
-   
+
     // change view settings
     changeView: function (view) {
       if (actual.$view) {
@@ -183,13 +185,13 @@ define(function (require){
 
         _private.changeView(settings);
         _private.slideIn();
-        
+
         // get model when it updates
         elements.$settingsForm = $('#settings-form');
         elements.$settingsForm.on('submit', function (event) {
           event && event.preventDefault();
           actual.models.timeModel = settings.model; 
-      
+
           Backbone.history.navigate('choose', {
             trigger: true
           });
@@ -202,7 +204,7 @@ define(function (require){
 
         // reset result collections
         actual.collections.results.reset();
-      
+
         // add three items
         actual.collections.results.add({
           type: 'minimum',
@@ -256,7 +258,7 @@ define(function (require){
 
         // calculate all periods that is possible to leave
         _private.setPeriods();
-        
+
         actual.models.done.set({
           result: selected.get('result'),
           type: selected.get('type'),
@@ -267,30 +269,32 @@ define(function (require){
 
         // remainder time
         interval = setInterval(function(){
-          var now = new Date();
+          var now = new Date(),
+          arrivedDate = new Date(selected.get('arrivedDate')),
+          period = new Date(_private.getPeriod(selected.get('type'))),
+          totalPeriod = new Date(_private.getPeriod(selected.get('type')));
 
           if (new Date(actual.models.done.get('dateToLeave')) >= now && !isDone) {
-            var arrivedMinutes = selected.get('arrivedDate').getHours() * 60 + selected.get('arrivedDate').getMinutes(),
+            var arrivedMinutes = arrivedDate.getHours() * 60 + arrivedDate.getMinutes(),
             nowMinutes = now.getHours() * 60 + now.getMinutes(),
-            period = new Date(_private.getPeriod(selected.get('type'))),
 
             // get worked minutes
             workedMinutes = nowMinutes - arrivedMinutes;
             period.removeMinutes(workedMinutes);
 
             // retrive values
-            var hours = app.paddingNumber(parseInt(period.getHours()), 2, 0),
-                minutes = app.paddingNumber(parseInt(period.getMinutes()), 2, 0),
+            var hours = app.paddingNumber(period.getHours(), 2, 0),
+                minutes = app.paddingNumber(period.getMinutes(), 2, 0),
 
             // get total period minutes
-            periodMinutes = period.getHours() * 60 + period.getMinutes(),
-            percent = workedMinutes * 100 / periodMinutes;
+            periodMinutes = totalPeriod.getHours() * 60 + totalPeriod.getMinutes(),
+            percent = (workedMinutes * 100) / periodMinutes;
 
             if (workedMinutes >= periodMinutes || percent === 100) {
               percent = 100;
               isDone = true;
             }
-            
+
             // setting remainder time to model
             actual.models.done.set({
               remainder: hours + ':' + minutes,
@@ -355,3 +359,6 @@ define(function (require){
 
   return app;
 });
+
+
+// VALIDAR SE A DATA ESCOLHIDA SE ENCAIXA COM NOW
