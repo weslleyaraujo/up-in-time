@@ -21,7 +21,6 @@ define(function (require){
     }
   };
 
-
   // _private methods 
   _private = {
     router: function () {
@@ -45,8 +44,26 @@ define(function (require){
     // the user has allreay calculated the time?
     issetTime: function () {
       var retrived = window.localStorage.done;
+      // set info into model
       if (retrived) {
-        console.log(retrived);
+        retrived = JSON.parse(retrived);
+        actual.models.done.set({
+          arrivedDate: new Date(retrived.arrivedDate),
+          dateToLeave: new Date(retrived.dateToLeave),
+          isCreated: true,
+          percent: retrived.percent,
+          percentInt: retrived.percentInt,
+          remainder: retrived.remainder,
+          remainderHours: retrived.remainderHours,
+          remainderMinutes: retrived.remainderMinutes,
+          result: retrived.result,
+          type: retrived.type
+        });
+
+        // save into localStorage
+        actual.models.done.saveModel();
+
+        return true;
       }
       return false;
     },
@@ -140,6 +157,9 @@ define(function (require){
     // views methods
     views: {
       index: function () {
+        // clear interval timer for save
+        _private.clearTimer();
+
         // is the user has now config yet and not set the time of the day
         if (!_private.issetTime()) {
           _private.changeView(new upintime.Views.index());
@@ -147,11 +167,16 @@ define(function (require){
         }
         // if the user has already set the time of the day
         else if (_private.issetTime()) {
-          console.log('final ai');
+          Backbone.history.navigate('done', {
+            trigger: true
+          });
         }
       },
 
       settings: function () {
+        // clear interval timer for save
+        _private.clearTimer();
+
         var settings = new upintime.Views.settings({
           model: actual.models.timeModel
         });
@@ -172,6 +197,9 @@ define(function (require){
       },
 
       choose: function () {
+        // clear interval timer for save
+        _private.clearTimer();
+
         // reset result collections
         actual.collections.results.reset();
       
@@ -212,11 +240,19 @@ define(function (require){
       },
 
       done: function () {
-        var selected = actual.collections.results.findWhere({
-          isSelected: true 
-        });
-        var isDone = false;
+        // clear interval timer for save
+        _private.clearTimer();
 
+        var selected,
+        isDone = false;
+        if (!actual.models.done.get('isCreated')) {
+          selected = actual.collections.results.findWhere({
+            isSelected: true 
+          });
+        }
+        else {
+          selected = actual.models.done; 
+        }
 
         // calculate all periods that is possible to leave
         _private.setPeriods();
@@ -228,8 +264,6 @@ define(function (require){
           dateToLeave: _private.dateToLeave(selected.get('type')),
           isCreated: true
         });
-        console.log(_private.dateToLeave(selected.get('type')));
-
 
         // remainder time
         interval = setInterval(function(){

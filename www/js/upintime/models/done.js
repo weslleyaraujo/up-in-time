@@ -18,8 +18,6 @@ define(['helpers'], function (helpers){
     },
 
     onChange: function () {
-      console.log('model is chaged');
-      console.log(this.toJSON());
       this.saveModel();
     },
 
