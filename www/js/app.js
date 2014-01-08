@@ -42,26 +42,28 @@ define(function (require){
       actual.$view.addClass('is-visible');
     },
 
+    setByStorage: function () {
+      var retrived = JSON.parse(window.localStorage.done);
+      actual.models.done.set({
+        arrivedDate: new Date(retrived.arrivedDate),
+        dateToLeave: new Date(retrived.dateToLeave),
+        isCreated: true,
+        percent: retrived.percent,
+        percentInt: retrived.percentInt,
+        remainder: retrived.remainder,
+        remainderHours: retrived.remainderHours,
+        remainderMinutes: retrived.remainderMinutes,
+        result: retrived.result,
+        type: retrived.type
+      });
+    },
+
     // the user has allreay calculated the time?
     issetTime: function () {
-      var retrived = window.localStorage.done;
-
       // set info into model
-      if (retrived) {
-        retrived = JSON.parse(retrived);
-        console.log(retrived);
-        actual.models.done.set({
-          arrivedDate: new Date(retrived.arrivedDate),
-          dateToLeave: new Date(retrived.dateToLeave),
-          isCreated: true,
-          percent: retrived.percent,
-          percentInt: retrived.percentInt,
-          remainder: retrived.remainder,
-          remainderHours: retrived.remainderHours,
-          remainderMinutes: retrived.remainderMinutes,
-          result: retrived.result,
-          type: retrived.type
-        });
+      if (window.localStorage.done) {
+        // set model by storage
+        _private.setByStorage();
 
         // save into localStorage
         actual.models.done.saveModel();
@@ -90,6 +92,14 @@ define(function (require){
       window.localStorage.removeItem('maxPeriod');
       window.localStorage.removeItem('minPeriod');
       window.localStorage.removeItem('period');
+
+      // clear is created from models
+      actual.collections.results.invoke('set', {
+        'isCreated': false
+      });
+
+      // create new actual model
+      actual.models.done = new upintime.Models.done();
     },
 
     // create all periods to work
@@ -136,7 +146,10 @@ define(function (require){
 
     // create the arrivedDate
     arrivedDate: function (arrived) {
-      var date = new Date();
+
+      // is date is set...
+      var arrived = actual.models.timeModel.get('arrived') || '00:00',
+      date = new Date();
       arrived = arrived.split(':');
       date.setHours(arrived[0]);
       date.setMinutes(arrived[1]);
@@ -167,9 +180,6 @@ define(function (require){
     // views methods
     views: {
       index: function () {
-        // clear interval timer for save
-        _private.clearTimer();
-
         // is the user has now config yet and not set the time of the day
         if (!_private.issetTime()) {
           Backbone.history.navigate('start', {
@@ -266,11 +276,11 @@ define(function (require){
         isDone = false;
         if (!actual.models.done.get('isCreated')) {
           selected = actual.collections.results.findWhere({
-            isSelected: true 
+            isSelected: true
           });
         }
         else {
-          selected = actual.models.done; 
+          selected = actual.models.done;
         }
 
         // calculate all periods that is possible to leave
@@ -279,7 +289,7 @@ define(function (require){
         actual.models.done.set({
           result: selected.get('result'),
           type: selected.get('type'),
-          arrivedDate: selected.get('arrivedDate'),
+          arrivedDate: _private.arrivedDate(),
           dateToLeave: _private.dateToLeave(selected.get('type')),
           isCreated: true
         });

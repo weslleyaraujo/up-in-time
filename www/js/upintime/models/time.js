@@ -7,7 +7,7 @@ define(['helpers'], function () {
       this.on('invalid', this.onError, this);
       this.trigger('sync');
     },
-    
+
     setLocal: function () {
       window.localStorage.baseTime = this.get('baseTime');
       window.localStorage.discount = this.get('discount');
@@ -25,16 +25,16 @@ define(['helpers'], function () {
       if (_.isNull(attrs.baseTime.match(/^([0-9][0-9]+:+[0-9][0-9])$/))) {
         return 'Basetime should be in time format.';
       }
-     
+
       if (!_.isNumber(parseInt(attrs.discount))) {
         return 'Discount should be a number.';
       }
-      
+
       if (_.isEmpty(attrs.discount)) {
         return 'Discount cant be empty';
       }
     },
-  
+
     now: function () {
       var date;
       if (this.get('arrived')) {
