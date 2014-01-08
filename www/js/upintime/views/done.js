@@ -12,6 +12,11 @@ define(['text!../views/done.html', 'helpers'], function (html, helpers){
       this.model.on('change', this.render, this);
     },
 
+    events: {
+      'click #settings-button': 'settingsHanlder',
+      'click #reset-button': 'resetHanlder',
+    },
+
     render: function () {
       // render view
       var template = _.template(html);
@@ -30,6 +35,24 @@ define(['text!../views/done.html', 'helpers'], function (html, helpers){
           blink.removeClass('is-invisible');
         }, 600);
       }, 1000);
+    },
+
+    settingsHanlder: function (event) {
+      event && event.preventDefault();
+      if (confirm('Are you sure you want to settings your defaults? (You gonna loose your actual timesheet)')) {
+        Backbone.history.navigate('settings', {
+          trigger: true
+        });
+      }
+    },
+
+    resetHanlder: function (event) {
+      event && event.preventDefault();
+      if (confirm('Are you sure you want to reset your? (You gonna loose your actual timesheet)')) {
+        Backbone.history.navigate('start', {
+          trigger: true
+        });
+      }
     }
   });
 });

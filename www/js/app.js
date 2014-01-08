@@ -32,6 +32,7 @@ define(function (require){
     bind: function () {
       // bind routes
       upintime.Helpers.events.on('index', _private.views.index);
+      upintime.Helpers.events.on('start', _private.views.start);
       upintime.Helpers.events.on('settings', _private.views.settings);
       upintime.Helpers.events.on('choose', _private.views.choose);
       upintime.Helpers.events.on('done', _private.views.done);
@@ -81,7 +82,14 @@ define(function (require){
     },
 
     clearTimer: function () {
+      // clear timer interval
       interval = clearInterval(interval);
+
+      // clear storage info
+      window.localStorage.removeItem('done');
+      window.localStorage.removeItem('maxPeriod');
+      window.localStorage.removeItem('minPeriod');
+      window.localStorage.removeItem('period');
     },
 
     // create all periods to work
@@ -164,8 +172,9 @@ define(function (require){
 
         // is the user has now config yet and not set the time of the day
         if (!_private.issetTime()) {
-          _private.changeView(new upintime.Views.index());
-          _private.slideIn();
+          Backbone.history.navigate('start', {
+            trigger: true
+          });
         }
         // if the user has already set the time of the day
         else if (_private.issetTime()) {
@@ -173,6 +182,14 @@ define(function (require){
             trigger: true
           });
         }
+      },
+
+      start: function () {
+        // clear interval timer for save
+        _private.clearTimer();
+
+        _private.changeView(new upintime.Views.index());
+        _private.slideIn();
       },
 
       settings: function () {
