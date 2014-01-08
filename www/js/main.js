@@ -11,7 +11,7 @@ require.config({
 
     // helpers
     helpers: '../js/helpers',
-    
+
     // models
     time: '../js/upintime/models/time',
     result: '../js/upintime/models/result',
@@ -26,7 +26,7 @@ require.config({
     // partials views
     timeResult: '../js/upintime/views/partials/time-result',
     timeResults: '../js/upintime/views/partials/time-results',
-  
+
     // collections
     results: '../js/upintime/collections/results',
 
@@ -52,7 +52,7 @@ require.config({
     'settings': {
       deps: ['backbone']
     },
-    
+
     // app
     'upintime': {
       // setting all deps of app
@@ -64,7 +64,7 @@ require.config({
         'settings'
       ]
     },
-    
+
     'app': {
       deps: [
         'upintime'
