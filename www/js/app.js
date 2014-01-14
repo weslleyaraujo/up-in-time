@@ -269,9 +269,6 @@ define(function (require){
       },
 
       done: function () {
-        // clear interval timer for save
-        _private.clearTimer();
-
         var selected,
         isDone = false;
         if (!actual.models.done.get('isCreated')) {
@@ -333,7 +330,7 @@ define(function (require){
           }
           else {
             _private.clearTimer();
-            alert('vai pra casa jamelão');
+            _private.isOver();
           }
         }, 100);
 
@@ -344,8 +341,15 @@ define(function (require){
         _private.slideIn();
       }
 
-    }
+    },
 
+    isOver: function () {
+      alert('Ta na hora ai vei');
+      Backbone.history.navigate('start', {
+        trigger: true
+      });
+    }
+    
   };
 
   // app methods
